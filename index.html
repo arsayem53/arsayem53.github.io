@@ -757,6 +757,25 @@ body.light::after {
         font-size: 1rem; /* slightly smaller for mobile */
     }
 }
+@media (max-width: 768px) {
+    #home {
+        align-items: flex-start;
+        text-align: left;
+    }
+
+    #home h1 {
+        font-size: clamp(2.8rem, 9vw, 3.6rem);
+    }
+
+    #home .subtitle,
+    #home .description {
+        text-align: left;
+    }
+
+    .btn-group {
+        justify-content: flex-start;
+    }
+}
 
     </style>
 </head>
