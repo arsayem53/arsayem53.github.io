@@ -6,7 +6,7 @@
     <title>Ashiqur Rahman Sayem - Portfolio</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Inter:wght@400;500&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -34,7 +34,7 @@
         }
 
         .dark .secondary {
-            color: #a0a0a0;
+            color: #a8a8a8;
         }
 
         .light .secondary {
@@ -87,6 +87,11 @@
             border: none;
             cursor: pointer;
             padding: 0;
+            transition: opacity 0.2s;
+        }
+
+        .logo:hover {
+            opacity: 0.8;
         }
 
         .dark .logo {
@@ -112,7 +117,7 @@
         }
 
         .dark .nav-link {
-            color: #a0a0a0;
+            color: #a8a8a8;
         }
 
         .light .nav-link {
@@ -135,10 +140,15 @@
             padding: 0.25rem;
             display: flex;
             align-items: center;
+            transition: transform 0.2s;
+        }
+
+        .theme-toggle:hover {
+            transform: scale(1.05);
         }
 
         .dark .theme-toggle {
-            color: #a0a0a0;
+            color: #a8a8a8;
         }
 
         .light .theme-toggle {
@@ -188,9 +198,17 @@
             text-align: left;
         }
 
+        .dark .mobile-menu button {
+            color: #e5e5e5;
+        }
+
+        .light .mobile-menu button {
+            color: #171717;
+        }
+
         section {
             min-height: 100vh;
-            padding: 4rem 2rem;
+            padding: 5rem 2rem;
         }
 
         #home {
@@ -199,13 +217,16 @@
             justify-content: center;
             align-items: center;
             text-align: center;
+            padding: 6rem 2rem;
         }
 
         h1 {
             font-family: 'JetBrains Mono', monospace;
-            font-size: clamp(2.5rem, 8vw, 4rem);
-            margin-bottom: 1.5rem;
-            font-weight: 400;
+            font-size: clamp(3.5rem, 10vw, 5.5rem);
+            margin-bottom: 1.25rem;
+            font-weight: 600;
+            letter-spacing: -0.02em;
+            line-height: 1.1;
         }
 
         .dark h1 {
@@ -218,28 +239,33 @@
 
         h2 {
             font-family: 'JetBrains Mono', monospace;
-            font-size: clamp(1.75rem, 5vw, 2.5rem);
-            margin-bottom: 2rem;
-            font-weight: 400;
+            font-size: clamp(2rem, 5vw, 2.75rem);
+            margin-bottom: 2.5rem;
+            font-weight: 500;
+            letter-spacing: -0.01em;
+            text-align: center;
         }
 
         h3 {
             font-family: 'JetBrains Mono', monospace;
-            font-size: clamp(1.1rem, 3vw, 1.35rem);
+            font-size: clamp(1.15rem, 3vw, 1.4rem);
             margin-bottom: 1rem;
-            font-weight: 400;
+            font-weight: 500;
         }
 
         .subtitle {
-            font-size: clamp(1rem, 3vw, 1.25rem);
-            margin-bottom: 0.5rem;
+            font-size: clamp(1.25rem, 3.5vw, 1.5rem);
+            margin-bottom: 0.75rem;
             max-width: 600px;
+            font-weight: 500;
+            line-height: 1.4;
         }
 
         .description {
-            font-size: clamp(0.95rem, 2.5vw, 1.1rem);
+            font-size: clamp(1.05rem, 2.75vw, 1.2rem);
             margin-bottom: 3rem;
-            max-width: 600px;
+            max-width: 650px;
+            line-height: 1.6;
         }
 
         .btn-group {
@@ -250,14 +276,15 @@
         }
 
         .btn {
-            padding: 0.75rem 1.5rem;
+            padding: 0.85rem 1.75rem;
             background-color: transparent;
-            border: 1px solid;
+            border: 1.5px solid;
             cursor: pointer;
             font-size: 0.95rem;
-            transition: all 0.2s;
+            transition: all 0.25s ease;
             text-decoration: none;
             display: inline-block;
+            font-weight: 500;
         }
 
         .dark .btn-primary {
@@ -273,29 +300,33 @@
         .dark .btn-primary:hover {
             background-color: #06b6d4;
             color: #0a0a0a;
+            transform: translateY(-1px);
         }
 
         .light .btn-primary:hover {
             background-color: #0891b2;
             color: #ffffff;
+            transform: translateY(-1px);
         }
 
         .dark .btn-secondary {
             color: #e5e5e5;
-            border-color: #262626;
+            border-color: #404040;
         }
 
         .light .btn-secondary {
             color: #171717;
-            border-color: #e5e5e5;
+            border-color: #d4d4d4;
         }
 
         .dark .btn-secondary:hover {
             border-color: #06b6d4;
+            transform: translateY(-1px);
         }
 
         .light .btn-secondary:hover {
             border-color: #0891b2;
+            transform: translateY(-1px);
         }
 
         .content-wrapper {
@@ -310,7 +341,7 @@
 
         .divider {
             height: 1px;
-            margin: 2rem 0;
+            margin: 2.5rem 0;
         }
 
         .dark .divider {
@@ -327,16 +358,18 @@
         }
 
         .text-body {
-            font-size: clamp(0.95rem, 2.5vw, 1.1rem);
-            line-height: 1.7;
+            font-size: clamp(1rem, 2.5vw, 1.1rem);
+            line-height: 1.75;
             margin-bottom: 2rem;
+            text-align: left;
         }
 
         .values-list {
-            font-size: clamp(0.9rem, 2.5vw, 1rem);
+            font-size: clamp(0.95rem, 2.5vw, 1.05rem);
             line-height: 2;
             list-style: none;
             padding: 0;
+            text-align: left;
         }
 
         .values-list li {
@@ -352,28 +385,30 @@
         .project-content {
             flex: 1;
             margin-bottom: 2rem;
+            text-align: left;
         }
 
         .project-section {
-            margin-bottom: 1.5rem;
+            margin-bottom: 1.75rem;
+            text-align: left;
         }
 
         .project-label {
             font-weight: 500;
-            margin-bottom: 0.5rem;
-            font-size: clamp(0.9rem, 2.5vw, 1rem);
+            margin-bottom: 0.65rem;
+            font-size: clamp(0.95rem, 2.5vw, 1.05rem);
         }
 
         .project-text {
-            line-height: 1.6;
-            font-size: clamp(0.9rem, 2.5vw, 1rem);
+            line-height: 1.7;
+            font-size: clamp(0.95rem, 2.5vw, 1.05rem);
         }
 
         .project-list {
             list-style: none;
             padding: 0;
-            font-size: clamp(0.9rem, 2.5vw, 1rem);
-            line-height: 1.6;
+            font-size: clamp(0.95rem, 2.5vw, 1.05rem);
+            line-height: 1.7;
         }
 
         .project-list li {
@@ -405,11 +440,11 @@
             border: none;
             cursor: pointer;
             font-size: 0.9rem;
-            transition: color 0.2s;
+            transition: color 0.2s, transform 0.2s;
         }
 
         .dark .nav-btn {
-            color: #a0a0a0;
+            color: #a8a8a8;
         }
 
         .light .nav-btn {
@@ -418,10 +453,16 @@
 
         .dark .nav-btn:hover {
             color: #06b6d4;
+            transform: translateX(2px);
         }
 
         .light .nav-btn:hover {
             color: #0891b2;
+            transform: translateX(2px);
+        }
+
+        .nav-btn:first-child:hover {
+            transform: translateX(-2px);
         }
 
         .dots {
@@ -436,7 +477,11 @@
             border-radius: 50%;
             border: none;
             cursor: pointer;
-            transition: background-color 0.2s;
+            transition: background-color 0.2s, transform 0.2s;
+        }
+
+        .dot:hover {
+            transform: scale(1.2);
         }
 
         .dark .dot {
@@ -463,7 +508,7 @@
         }
 
         .dark .project-counter {
-            color: #a0a0a0;
+            color: #a8a8a8;
         }
 
         .light .project-counter {
@@ -480,21 +525,23 @@
 
         .skills-section h3 {
             font-family: 'JetBrains Mono', monospace;
-            font-size: clamp(1.1rem, 3vw, 1.25rem);
-            margin-bottom: 1rem;
-            font-weight: 400;
+            font-size: clamp(1.15rem, 3vw, 1.3rem);
+            margin-bottom: 1.1rem;
+            font-weight: 500;
         }
 
         .skills-list {
             list-style: none;
             padding: 0;
-            font-size: clamp(0.9rem, 2.5vw, 1rem);
-            line-height: 1.8;
+            font-size: clamp(0.95rem, 2.5vw, 1.05rem);
+            line-height: 1.9;
+            text-align: left;
         }
 
         .contact-info {
-            font-size: clamp(0.95rem, 2.5vw, 1.1rem);
-            line-height: 2;
+            font-size: clamp(1rem, 2.5vw, 1.1rem);
+            line-height: 2.2;
+            text-align: left;
         }
 
         .contact-info p {
@@ -503,6 +550,11 @@
 
         .contact-info a {
             text-decoration: none;
+            transition: opacity 0.2s;
+        }
+
+        .contact-info a:hover {
+            opacity: 0.8;
         }
 
         .dark .contact-info a {
@@ -520,6 +572,14 @@
 
             .mobile-nav-toggle {
                 display: flex !important;
+            }
+
+            #home {
+                padding: 4rem 2rem;
+            }
+
+            section {
+                padding: 4rem 2rem;
             }
         }
 
@@ -601,7 +661,7 @@
     <section id="home">
         <h1>&lt;sayem /&gt;</h1>
         <p class="subtitle secondary">Computer Science Undergraduate</p>
-        <p class="description secondary">< Systems > • < ML > • < Problem Solving > • < Data Analysis ></Systems></p>
+        <p class="description secondary">< Systems > • < ML > • < Problem Solving > • < Data Analysis ></p>
         <div class="btn-group">
             <button class="btn btn-primary" onclick="scrollToSection('projects')">View Projects</button>
             <a href="https://github.com/arsayem53" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">GitHub</a>
@@ -617,7 +677,7 @@
             </p>
             <div class="divider"></div>
             <div class="secondary">
-                <p style="margin-bottom: 1rem; font-weight: 500;">What I value:</p>
+                <p style="margin-bottom: 1rem; font-weight: 500; text-align: left;">What I value:</p>
                 <ul class="values-list">
                     <li>- Understanding before optimization</li>
                     <li>- Writing things from scratch to learn why abstractions exist</li>
