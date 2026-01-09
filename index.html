@@ -2,11 +2,18 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+
+    <title>Ashiqur Rahman Sayem | CS Undergraduate · Systems · ML · Problem Solving</title>
+    <meta name="description" content="Portfolio of Ashiqur Rahman Sayem, a Computer Science undergraduate focused on systems thinking, data structures, problem solving, and machine learning fundamentals.">
+    <meta name="author" content="Ashiqur Rahman Sayem">
+    <meta name="keywords" content="Computer Science, DSA, Machine Learning, Systems, Portfolio, Python, C, Linux">
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ashiqur Rahman Sayem - Portfolio</title>
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+
     <style>
         * {
             margin: 0;
@@ -599,19 +606,154 @@
             width: 20px;
             height: 20px;
         }
+        /* ================================
+   Scorpion-style Background Layer
+   CSS ONLY — OPTIONAL
+   ================================ */
+
+/* Background container */
+body.dark::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    pointer-events: none;
+
+    background:
+        linear-gradient(
+            rgba(6, 182, 212, 0.08) 1px,
+            transparent 1px
+        ),
+        linear-gradient(
+            90deg,
+            rgba(6, 182, 212, 0.08) 1px,
+            transparent 1px
+        );
+
+    background-size: 32px 32px; /* tighter grid */
+    opacity: 0.55;              /* more presence */
+}
+
+/* Scanning line */
+body.dark::after {
+    content: "";
+    position: fixed;
+    top: -100%;
+    left: 0;
+    width: 100%;
+    height: 200%;
+    z-index: -1;
+    pointer-events: none;
+
+    background: linear-gradient(
+        to bottom,
+        transparent 0%,
+        rgba(6, 182, 212, 0.14) 50%,
+        transparent 100%
+    );
+
+    animation: scorpion-scan 9s linear infinite;
+}
+
+
+/* Animation */
+@keyframes scorpion-scan {
+    0% {
+        transform: translateY(-50%);
+    }
+    100% {
+        transform: translateY(50%);
+    }
+}
+
+/* Disable effect in light mode */
+body.light::before,
+body.light::after {
+    display: none;
+}
+
+/* ================================
+   Scorpion Button Data Pulse
+   ================================ */
+
+.btn {
+    position: relative;
+    overflow: hidden;
+}
+
+.btn::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        120deg,
+        transparent,
+        rgba(6, 182, 212, 0.25),
+        transparent
+    );
+    transform: translateX(-120%);
+    transition: transform 0.6s ease;
+}
+
+.btn:hover::after {
+    transform: translateX(120%);
+}
+
+/* ================================
+   Terminal Cursor Effect
+   ================================ */
+
+#home h1::after {
+    content: "▌";
+    margin-left: 0.2rem;
+    animation: cursor-blink 1.1s steps(1) infinite;
+    opacity: 0.8;
+}
+
+@keyframes cursor-blink {
+    0%, 50% {
+        opacity: 1;
+    }
+    50.01%, 100% {
+        opacity: 0;
+    }
+}
+/* ================================
+   Project Transition Effect
+   ================================ */
+
+.project-content {
+    animation: project-fade 0.35s ease;
+}
+
+@keyframes project-fade {
+    from {
+        opacity: 0;
+        transform: translateY(6px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
     </style>
 </head>
 <body class="dark">
+
     <!-- Navigation -->
-    <nav>
-        <button class="logo" onclick="scrollToSection('home')">&lt;sayem /&gt;</button>
+    <nav aria-label="Primary navigation"><!-- UPDATED: aria-label -->
+        <button class="logo" onclick="scrollToSection('home')" aria-label="Go to home section">
+            &lt;sayem /&gt;
+        </button>
         
         <div class="desktop-nav">
-            <button class="nav-link" onclick="scrollToSection('projects')">projects</button>
-            <button class="nav-link" onclick="scrollToSection('about')">about</button>
-            <button class="nav-link" onclick="scrollToSection('skills')">skills</button>
-            <button class="nav-link" onclick="scrollToSection('contact')">contact</button>
-            <button class="theme-toggle" onclick="toggleTheme()">
+            <button class="nav-link" onclick="scrollToSection('projects')" aria-label="Go to projects">projects</button>
+            <button class="nav-link" onclick="scrollToSection('about')" aria-label="Go to about">about</button>
+            <button class="nav-link" onclick="scrollToSection('skills')" aria-label="Go to skills">skills</button>
+            <button class="nav-link" onclick="scrollToSection('contact')" aria-label="Go to contact">contact</button>
+
+            <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle dark and light theme">
                 <svg class="icon sun-icon" style="display: none;" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <circle cx="12" cy="12" r="5"></circle>
                     <line x1="12" y1="1" x2="12" y2="3"></line>
@@ -629,7 +771,7 @@
             </button>
         </div>
 
-        <button class="mobile-nav-toggle" onclick="toggleMobileMenu()">
+        <button class="mobile-nav-toggle" onclick="toggleMobileMenu()" aria-label="Toggle mobile navigation">
             <svg class="icon-lg menu-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <line x1="3" y1="12" x2="21" y2="12"></line>
                 <line x1="3" y1="6" x2="21" y2="6"></line>
@@ -665,31 +807,53 @@
     </div>
 
     <!-- Home Section -->
-    <section id="home">
+<section id="home">
         <h1>&lt;sayem /&gt;</h1>
-        <p class="subtitle secondary">Computer Science Undergraduate</p>
-        <p class="description secondary">< Systems > • < ML > • < Problem Solving > • < Data Analysis ></p>
+
+        <!-- UPDATED: stronger identity -->
+        <p class="subtitle secondary">
+            Computer Science Undergraduate
+        </p>
+
+        <!-- UPDATED: sharper, intentional tagline -->
+        <p class="description secondary">
+            &lt; Systems &gt; • &lt; Data Structures &gt; • &lt; ML &gt; • &lt; Data Science &gt;
+        </p>
+
         <div class="btn-group">
-            <button class="btn btn-primary" onclick="scrollToSection('projects')">View Projects</button>
-            <a href="https://github.com/arsayem53" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">GitHub</a>
+            <button class="btn btn-primary" onclick="scrollToSection('projects')">
+                View Selected Projects
+            </button>
+            <a href="https://github.com/arsayem53"
+               target="_blank"
+               rel="noopener noreferrer"
+               class="btn btn-secondary">
+                GitHub (Code)
+            </a>
         </div>
     </section>
 
     <!-- About Section -->
-    <section id="about">
+     <section id="about">
         <div class="content-wrapper">
             <h2>About</h2>
+
+            <!-- UPDATED: tightened language, same meaning -->
             <p class="text-body secondary">
-                I am a Computer Science undergraduate currently rebuilding my technical foundations with a focus on clarity and long-term understanding. After realizing that I could complete coursework without fully internalizing core concepts, I made a deliberate decision to step back and relearn computer science fundamentals from the ground up. I am especially interested in problem-solving, core data structures, and the practical application of machine learning for social impact, data science, and analysis.
+                I am a Computer Science undergraduate deliberately rebuilding my technical foundations with an emphasis on clarity, correctness, and long-term understanding. After recognizing that coursework completion does not guarantee conceptual mastery, I chose to step back and relearn core computer science principles from first principles. My interests center on problem-solving, fundamental data structures, and the practical application of machine learning for data analysis and socially relevant problems.
             </p>
+
             <div class="divider"></div>
+
             <div class="secondary">
-                <p style="margin-bottom: 1rem; font-weight: 500; text-align: left;">What I value:</p>
+                <p style="margin-bottom: 1rem; font-weight: 500; text-align: left;">
+                    What I value:
+                </p>
                 <ul class="values-list">
                     <li>- Understanding before optimization</li>
-                    <li>- Writing things from scratch to learn why abstractions exist</li>
+                    <li>- Writing implementations from scratch to expose underlying mechanics</li>
                     <li>- Consistent progress over shortcuts</li>
-                    <li>- Building systems that are simple and explainable</li>
+                    <li>- Simple, explainable systems over opaque complexity</li>
                 </ul>
             </div>
         </div>
