@@ -776,6 +776,28 @@ body.light::after {
         justify-content: flex-start;
     }
 }
+@media (max-width: 768px) {
+    section h2 {
+        text-align: left;
+    }
+}
+@media (max-width: 768px) {
+    #home .description {
+        display: flex;
+        flex-direction: column;
+        gap: 0.25rem;
+        text-align: left;
+    }
+
+    #home .description::before,
+    #home .description::after {
+        content: none;
+    }
+
+    #home .description {
+        white-space: pre-line;
+    }
+}
 
     </style>
 </head>
