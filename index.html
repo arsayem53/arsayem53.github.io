@@ -80,18 +80,19 @@
             border-bottom: 1px solid #e5e5e5;
         }
 
-        nav {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            padding: 1.5rem 2rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            z-index: 1000;
-            transition: background-color 0.3s, border-color 0.3s;
-        }
+nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    padding: 1.5rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 1000;
+    transition: transform 0.3s ease, background-color 0.3s, border-color 0.3s;
+}
+
 
         .logo {
             font-family: 'JetBrains Mono', monospace;
@@ -1173,6 +1174,21 @@ body.light::after {
 
         // Initialize
         renderProject();
+        // Navbar hide/show on scroll
+let lastScrollY = window.scrollY;
+const nav = document.querySelector('nav');
+
+window.addEventListener('scroll', () => {
+    if (window.scrollY > lastScrollY) {
+        // Scrolling down → hide nav
+        nav.style.transform = 'translateY(-100%)';
+    } else {
+        // Scrolling up → show nav
+        nav.style.transform = 'translateY(0)';
+    }
+    lastScrollY = window.scrollY;
+});
+
     </script>
 </body>
 </html>
