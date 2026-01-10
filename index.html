@@ -802,6 +802,16 @@ body.light::after {
     }
 }
 
+.sep::before {
+    content: "|";
+    opacity: 0.7;
+    animation: blink 1.2s steps(1) infinite;
+}
+
+@keyframes blink {
+    0%, 50% { opacity: 0.7; }
+    51%, 100% { opacity: 0.2; }
+}
 
     </style>
 </head>
@@ -884,13 +894,14 @@ body.light::after {
         <!-- UPDATED: sharper, intentional tagline -->
 <p class="description secondary stackable">
     <span>&lt; Systems &gt;</span>
-    <span class="dot">•</span>
+    <span class="sep"></span>
     <span>&lt; Data Structures &gt;</span>
-    <span class="dot">•</span>
+    <span class="sep"></span>
     <span>&lt; ML &gt;</span>
-    <span class="dot">•</span>
+    <span class="sep"></span>
     <span>&lt; Data Science &gt;</span>
 </p>
+
 
 
 
