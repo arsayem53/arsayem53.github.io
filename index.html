@@ -11,15 +11,26 @@
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+    <!-- Open Graph / Social Media Preview -->
+    <meta property="og:title" content="Ashiqur Rahman Sayem | Computer Science Undergraduate">
+    <meta property="og:url" content="https://arsayem53.github.io/">
+    <meta property="og:type" content="website">
+    <meta property="og:description" content="Portfolio of Ashiqur Rahman Sayem, Computer Science undergraduate focused on systems, data structures, and machine learning.">
+    <meta property="og:image" content="https://arsayem53.github.io/og-image.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Ashiqur Rahman Sayem | CS Undergraduate">
+    <meta name="twitter:description" content="CS undergraduate focused on systems, DSA, and machine learning.">
+    <meta name="twitter:image" content="https://arsayem53.github.io/og-image.png">
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Inter:wght@400;500&display=swap" rel="stylesheet">
     <link rel="canonical" href="https://arsayem53.github.io/">
 
-    <meta property="og:title" content="Ashiqur Rahman Sayem | Computer Science Undergraduate">
-    <meta property="og:url" content="https://arsayem53.github.io/">
-    <meta property="og:type" content="website">
-    <meta property="og:description" content="Portfolio of Ashiqur Rahman Sayem, Computer Science undergraduate focused on systems, data structures, and machine learning.">
 <style>
         * {
             margin: 0;
@@ -70,6 +81,64 @@
             border-color: #e5e5e5;
         }
 
+        /* ================================
+           Skip to Content (Accessibility)
+           ================================ */
+        .skip-to-content {
+            position: fixed;
+            top: -100px;
+            left: 50%;
+            transform: translateX(-50%);
+            padding: 1rem 2rem;
+            z-index: 9999;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.9rem;
+            text-decoration: none;
+            transition: top 0.3s;
+            border-radius: 0 0 8px 8px;
+        }
+
+        .dark .skip-to-content {
+            background: #06b6d4;
+            color: #0a0a0a;
+        }
+
+        .light .skip-to-content {
+            background: #0891b2;
+            color: #ffffff;
+        }
+
+        .skip-to-content:focus {
+            top: 0;
+            outline: none;
+        }
+
+        /* ================================
+           Scroll Progress Bar
+           ================================ */
+        .scroll-progress {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 0%;
+            height: 3px;
+            z-index: 9999;
+            transition: width 0.1s linear;
+        }
+
+        .dark .scroll-progress {
+            background: linear-gradient(90deg, #06b6d4, #22d3ee);
+            box-shadow: 0 0 10px rgba(6, 182, 212, 0.5);
+        }
+
+        .light .scroll-progress {
+            background: linear-gradient(90deg, #0891b2, #06b6d4);
+            box-shadow: 0 0 10px rgba(8, 145, 178, 0.5);
+        }
+
+        /* ================================
+           Navigation
+           ================================ */
         .dark nav {
             background-color: #0a0a0a;
             border-bottom: 1px solid #262626;
@@ -147,6 +216,29 @@
 
         .light .nav-link:hover, .light .nav-link.active {
             color: #0891b2;
+        }
+
+        /* Focus states for accessibility */
+        .nav-link:focus-visible,
+        .theme-toggle:focus-visible,
+        .logo:focus-visible,
+        .btn:focus-visible {
+            outline: 2px solid;
+            outline-offset: 4px;
+        }
+
+        .dark .nav-link:focus-visible,
+        .dark .theme-toggle:focus-visible,
+        .dark .logo:focus-visible,
+        .dark .btn:focus-visible {
+            outline-color: #06b6d4;
+        }
+
+        .light .nav-link:focus-visible,
+        .light .theme-toggle:focus-visible,
+        .light .logo:focus-visible,
+        .light .btn:focus-visible {
+            outline-color: #0891b2;
         }
 
         .theme-toggle {
@@ -227,12 +319,15 @@
             color: #0891b2;
         }
 
+        /* ================================
+           Sections - FIXED GAPS
+           ================================ */
         section {
-            min-height: 100vh;
             padding: 5rem 2rem;
         }
 
         #home {
+            min-height: 100vh;
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -241,9 +336,54 @@
             padding: 6rem 2rem;
         }
 
-        #about, #skills, #contact {
+        /* Remove min-height from other sections */
+        #about, #skills, #contact, #journey {
+            min-height: auto;
+            padding: 4rem 2rem;
+        }
+
+        #projects {
             min-height: auto;
             padding: 5rem 2rem;
+        }
+
+        /* ================================
+           Fade-in on Scroll Animation
+           ================================ */
+        .fade-in-section {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+
+        .fade-in-section.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Reduced motion support */
+        @media (prefers-reduced-motion: reduce) {
+            .fade-in-section {
+                opacity: 1;
+                transform: none;
+                transition: none;
+            }
+
+            .scroll-progress {
+                transition: none;
+            }
+
+            html {
+                scroll-behavior: auto;
+            }
+
+            .project-card,
+            .skill-pill,
+            .btn,
+            .timeline-item {
+                transition: none !important;
+                animation: none !important;
+            }
         }
 
         h1 {
@@ -309,7 +449,9 @@
             font-size: 0.95rem;
             transition: all 0.25s ease;
             text-decoration: none;
-            display: inline-block;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
             font-weight: 500;
         }
 
@@ -397,7 +539,9 @@
             margin-bottom: 0.5rem;
         }
 
-        /* Project Cards Styles */
+        /* ================================
+           Project Cards with Smooth Shadows
+           ================================ */
         .projects-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
@@ -407,7 +551,7 @@
         .project-card {
             padding: 1.75rem;
             border: 1px solid;
-            transition: transform 0.2s, border-color 0.3s;
+            transition: transform 0.3s ease, border-color 0.3s, box-shadow 0.3s ease;
             display: flex;
             flex-direction: column;
             cursor: pointer;
@@ -416,23 +560,27 @@
         .dark .project-card {
             border-color: #262626;
             background: rgba(10, 10, 10, 0.6);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
         }
 
         .light .project-card {
             border-color: #e5e5e5;
             background: rgba(255, 255, 255, 0.8);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
         }
 
         .project-card:hover {
-            transform: translateY(-4px);
+            transform: translateY(-6px);
         }
 
         .dark .project-card:hover {
             border-color: #06b6d4;
+            box-shadow: 0 8px 30px rgba(6, 182, 212, 0.2), 0 4px 20px rgba(0, 0, 0, 0.4);
         }
 
         .light .project-card:hover {
             border-color: #0891b2;
+            box-shadow: 0 8px 30px rgba(8, 145, 178, 0.15), 0 4px 20px rgba(0, 0, 0, 0.1);
         }
 
         .project-card h3 {
@@ -592,9 +740,8 @@
         }
 
         /* ================================
-           NEW: Skills Section Styles
+           Skills Section
            ================================ */
-
         .skills-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -604,7 +751,7 @@
         .skill-category {
             padding: 1.5rem;
             border: 1px solid;
-            transition: border-color 0.3s;
+            transition: border-color 0.3s, box-shadow 0.3s;
         }
 
         .dark .skill-category {
@@ -619,10 +766,12 @@
 
         .dark .skill-category:hover {
             border-color: #404040;
+            box-shadow: 0 4px 20px rgba(6, 182, 212, 0.1);
         }
 
         .light .skill-category:hover {
             border-color: #d4d4d4;
+            box-shadow: 0 4px 20px rgba(8, 145, 178, 0.08);
         }
 
         .skill-category-header {
@@ -697,7 +846,6 @@
             color: #0891b2;
         }
 
-        /* Highlighted/Primary skills */
         .skill-pill.primary {
             border-width: 1.5px;
         }
@@ -714,7 +862,6 @@
             color: #0891b2;
         }
 
-        /* Learning indicator */
         .skill-pill.learning {
             position: relative;
         }
@@ -738,7 +885,6 @@
             color: #ca8a04;
         }
 
-        /* Section divider for skills */
         .skills-divider {
             display: flex;
             align-items: center;
@@ -774,7 +920,6 @@
             color: #a8a8a8;
         }
 
-        /* Learning section */
         .learning-section {
             margin-top: 2rem;
             padding: 1.5rem;
@@ -822,6 +967,127 @@
             gap: 0.5rem;
         }
 
+        /* ================================
+           Timeline Section
+           ================================ */
+        .timeline {
+            position: relative;
+            max-width: 700px;
+            margin: 0 auto;
+            padding-left: 2rem;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+        }
+
+        .dark .timeline::before {
+            background: linear-gradient(to bottom, #06b6d4, #262626);
+        }
+
+        .light .timeline::before {
+            background: linear-gradient(to bottom, #0891b2, #e5e5e5);
+        }
+
+        .timeline-item {
+            position: relative;
+            padding-bottom: 2.5rem;
+            padding-left: 1.5rem;
+        }
+
+        .timeline-item:last-child {
+            padding-bottom: 0;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -2rem;
+            top: 0.35rem;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            border: 2px solid;
+        }
+
+        .dark .timeline-item::before {
+            background: #0a0a0a;
+            border-color: #06b6d4;
+            box-shadow: 0 0 10px rgba(6, 182, 212, 0.4);
+        }
+
+        .light .timeline-item::before {
+            background: #ffffff;
+            border-color: #0891b2;
+            box-shadow: 0 0 10px rgba(8, 145, 178, 0.3);
+        }
+
+        .timeline-item.current::before {
+            animation: timeline-pulse 2s infinite;
+        }
+
+        @keyframes timeline-pulse {
+            0%, 100% {
+                box-shadow: 0 0 10px rgba(6, 182, 212, 0.4);
+            }
+            50% {
+                box-shadow: 0 0 20px rgba(6, 182, 212, 0.8);
+            }
+        }
+
+        .timeline-date {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.8rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .dark .timeline-date {
+            color: #06b6d4;
+        }
+
+        .light .timeline-date {
+            color: #0891b2;
+        }
+
+        .timeline-title {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 1.1rem;
+            font-weight: 500;
+            margin-bottom: 0.5rem;
+        }
+
+        .timeline-description {
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        .timeline-tag {
+            display: inline-block;
+            font-size: 0.7rem;
+            padding: 0.2rem 0.5rem;
+            margin-top: 0.75rem;
+            font-family: 'JetBrains Mono', monospace;
+            border-radius: 2px;
+        }
+
+        .dark .timeline-tag {
+            background: rgba(6, 182, 212, 0.15);
+            color: #06b6d4;
+        }
+
+        .light .timeline-tag {
+            background: rgba(8, 145, 178, 0.1);
+            color: #0891b2;
+        }
+
+        /* ================================
+           Contact Section
+           ================================ */
         .contact-info {
             font-size: clamp(1rem, 2.5vw, 1.1rem);
             line-height: 2.2;
@@ -849,7 +1115,66 @@
             color: #0891b2;
         }
 
-        /* Footer styles */
+        /* ================================
+           Back to Top Button
+           ================================ */
+        .back-to-top {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            border: 1.5px solid;
+            background: transparent;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(20px);
+            transition: all 0.3s ease;
+            z-index: 999;
+        }
+
+        .back-to-top.visible {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .dark .back-to-top {
+            border-color: #06b6d4;
+            color: #06b6d4;
+            background: rgba(10, 10, 10, 0.9);
+        }
+
+        .light .back-to-top {
+            border-color: #0891b2;
+            color: #0891b2;
+            background: rgba(255, 255, 255, 0.9);
+        }
+
+        .back-to-top:hover {
+            transform: translateY(-4px);
+        }
+
+        .dark .back-to-top:hover {
+            background: #06b6d4;
+            color: #0a0a0a;
+            box-shadow: 0 4px 20px rgba(6, 182, 212, 0.4);
+        }
+
+        .light .back-to-top:hover {
+            background: #0891b2;
+            color: #ffffff;
+            box-shadow: 0 4px 20px rgba(8, 145, 178, 0.3);
+        }
+
+        /* ================================
+           Footer
+           ================================ */
         footer {
             padding: 2rem;
             text-align: center;
@@ -895,6 +1220,9 @@
             margin-bottom: 1rem;
         }
 
+        /* ================================
+           Mobile Responsiveness
+           ================================ */
         @media (max-width: 768px) {
             .desktop-nav {
                 display: none !important;
@@ -909,7 +1237,7 @@
             }
 
             section {
-                padding: 4rem 2rem;
+                padding: 3rem 1.5rem;
             }
 
             .projects-grid {
@@ -928,6 +1256,37 @@
             .skills-grid {
                 grid-template-columns: 1fr;
             }
+
+            .back-to-top {
+                bottom: 1.5rem;
+                right: 1.5rem;
+                width: 42px;
+                height: 42px;
+            }
+
+            .timeline {
+                padding-left: 1.5rem;
+            }
+
+            .timeline-item {
+                padding-left: 1rem;
+            }
+
+            .timeline-item::before {
+                left: -1.5rem;
+                width: 10px;
+                height: 10px;
+            }
+
+            .btn-group {
+                flex-direction: column;
+                width: 100%;
+            }
+
+            .btn {
+                width: 100%;
+                justify-content: center;
+            }
         }
 
         .icon {
@@ -941,9 +1300,8 @@
         }
 
         /* ================================
-           Scorpion-style Background Layer
+           Background Grid - BOTH THEMES
            ================================ */
-
         body.dark::before {
             content: "";
             position: fixed;
@@ -982,6 +1340,45 @@
             animation: scorpion-scan 9s linear infinite;
         }
 
+        /* Light mode grid and scan */
+        body.light::before {
+            content: "";
+            position: fixed;
+            inset: 0;
+            z-index: -1;
+            pointer-events: none;
+            background:
+                linear-gradient(
+                    rgba(8, 145, 178, 0.06) 1px,
+                    transparent 1px
+                ),
+                linear-gradient(
+                    90deg,
+                    rgba(8, 145, 178, 0.06) 1px,
+                    transparent 1px
+                );
+            background-size: 32px 32px;
+            opacity: 0.6;
+        }
+
+        body.light::after {
+            content: "";
+            position: fixed;
+            top: -100%;
+            left: 0;
+            width: 100%;
+            height: 200%;
+            z-index: -1;
+            pointer-events: none;
+            background: linear-gradient(
+                to bottom,
+                transparent 0%,
+                rgba(8, 145, 178, 0.08) 50%,
+                transparent 100%
+            );
+            animation: scorpion-scan 9s linear infinite;
+        }
+
         @keyframes scorpion-scan {
             0% {
                 transform: translateY(-50%);
@@ -991,15 +1388,9 @@
             }
         }
 
-        body.light::before,
-        body.light::after {
-            display: none;
-        }
-
         /* ================================
-           Scorpion Button Data Pulse
+           Button Pulse Effect
            ================================ */
-
         .btn {
             position: relative;
             overflow: hidden;
@@ -1026,7 +1417,6 @@
         /* ================================
            Terminal Cursor Effect
            ================================ */
-
         #home h1::after {
             content: "▌";                
             margin-left: 0.2rem;
@@ -1044,9 +1434,8 @@
         }
 
         /* ================================
-           Project Card Animation
+           Card Fade Animation
            ================================ */
-
         .project-card {
             animation: card-fade 0.35s ease;
         }
@@ -1128,7 +1517,7 @@
             opacity: 0.7;
         }
 
-        /* Currently working on badge */
+        /* Status badge */
         .status-badge {
             display: inline-flex;
             align-items: center;
@@ -1179,6 +1568,12 @@
 </head>
 <body class="dark">
 
+    <!-- Skip to Content -->
+    <a href="#main-content" class="skip-to-content">Skip to main content</a>
+
+    <!-- Scroll Progress Bar -->
+    <div class="scroll-progress" id="scrollProgress"></div>
+
     <!-- Navigation -->
     <nav aria-label="Primary navigation">
         <button class="logo" onclick="scrollToSection('home')" aria-label="Go to home section">
@@ -1187,6 +1582,7 @@
         
         <div class="desktop-nav">
             <button class="nav-link" onclick="scrollToSection('projects')" aria-label="Go to projects">projects</button>
+            <button class="nav-link" onclick="scrollToSection('journey')" aria-label="Go to journey">journey</button>
             <button class="nav-link" onclick="scrollToSection('about')" aria-label="Go to about">about</button>
             <button class="nav-link" onclick="scrollToSection('skills')" aria-label="Go to skills">skills</button>
             <button class="nav-link" onclick="scrollToSection('contact')" aria-label="Go to contact">contact</button>
@@ -1225,6 +1621,7 @@
     <!-- Mobile Menu -->
     <div class="mobile-menu" id="mobileMenu">
         <button onclick="scrollToSection('projects'); toggleMobileMenu()">projects</button>
+        <button onclick="scrollToSection('journey'); toggleMobileMenu()">journey</button>
         <button onclick="scrollToSection('about'); toggleMobileMenu()">about</button>
         <button onclick="scrollToSection('skills'); toggleMobileMenu()">skills</button>
         <button onclick="scrollToSection('contact'); toggleMobileMenu()">contact</button>
@@ -1244,209 +1641,278 @@
         </button>
     </div>
 
-    <!-- Home Section -->
-    <section id="home">
-        <h1>@ar-sayem:~$</h1>
+    <!-- Main Content -->
+    <main id="main-content">
 
-        <p class="subtitle secondary">
-            Computer Science Undergraduate
-        </p>
+        <!-- Home Section -->
+        <section id="home">
+            <h1>@ar-sayem:~$</h1>
 
-        <p class="description secondary stackable">
-            <span>&lt; Systems &gt;</span>
-            <span class="sep"></span>
-            <span>&lt; ML &gt;</span>
-            <span class="sep"></span>
-            <span>&lt; Data Analysis &gt;</span>
-        </p>
-
-        <div class="status-badge">
-            <span class="status-dot"></span>
-            <span>Currently: DSA deep-dive</span>
-        </div>
-
-        <div class="btn-group">
-            <button class="btn btn-primary" onclick="scrollToSection('projects')">
-                View Selected Projects
-            </button>
-            <a href="https://github.com/arsayem53"
-               target="_blank"
-               rel="noopener noreferrer"
-               class="btn btn-secondary">
-                GitHub (Code)
-            </a>
-        </div>
-    </section>
-
-    <!-- About Section -->
-    <section id="about">
-        <div class="content-wrapper">
-            <h2>About</h2>
-
-            <p class="text-body secondary">
-                CS undergraduate rebuilding my foundations from first principles — focusing on clarity over speed. Interested in systems, data structures, and applying ML to real problems.
+            <p class="subtitle secondary">
+                Computer Science Undergraduate
             </p>
 
-            <div class="divider"></div>
+            <p class="description secondary stackable">
+                <span>&lt; Systems &gt;</span>
+                <span class="sep"></span>
+                <span>&lt; ML &gt;</span>
+                <span class="sep"></span>
+                <span>&lt; Data Analysis &gt;</span>
+            </p>
 
-            <div class="secondary">
-                <p style="margin-bottom: 1rem; font-weight: 500; text-align: left;">
-                    What I value:
+            <div class="status-badge">
+                <span class="status-dot"></span>
+                <span>Currently: DSA deep-dive</span>
+            </div>
+
+            <div class="btn-group">
+                <button class="btn btn-primary" onclick="scrollToSection('projects')">
+                    View Projects
+                </button>
+                <a href="https://github.com/arsayem53"
+                   target="_blank"
+                   rel="noopener noreferrer"
+                   class="btn btn-secondary">
+                    <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                    </svg>
+                    GitHub
+                </a>
+                <a href="./resume.pdf"
+                   target="_blank"
+                   rel="noopener noreferrer"
+                   class="btn btn-secondary">
+                    <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
+                        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                        <polyline points="14 2 14 8 20 8"></polyline>
+                        <line x1="16" y1="13" x2="8" y2="13"></line>
+                        <line x1="16" y1="17" x2="8" y2="17"></line>
+                        <polyline points="10 9 9 9 8 9"></polyline>
+                    </svg>
+                    Resume
+                </a>
+            </div>
+        </section>
+
+        <!-- Projects Section -->
+        <section id="projects" class="fade-in-section">
+            <div class="content-wrapper-wide">
+                <h2>Projects</h2>
+                <div class="projects-grid" id="projectsGrid">
+                    <!-- Project cards will be inserted here by JavaScript -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Journey/Timeline Section -->
+        <section id="journey" class="fade-in-section">
+            <div class="content-wrapper">
+                <h2>Journey</h2>
+                <div class="timeline">
+                    <div class="timeline-item current">
+                        <div class="timeline-date">2024 - Present</div>
+                        <div class="timeline-title">Rebuilding Foundations</div>
+                        <p class="timeline-description secondary">
+                            Decided to rebuild CS fundamentals from first principles. Focusing on DSA, clean code, and understanding over memorization.
+                        </p>
+                        <span class="timeline-tag">In Progress</span>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-date">2024</div>
+                        <div class="timeline-title">Advanced Content Tracker</div>
+                        <p class="timeline-description secondary">
+                            Built a Linux daemon with ML integration. First major project combining systems programming with machine learning.
+                        </p>
+                        <span class="timeline-tag">Python • Linux • ML</span>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-date">2023</div>
+                        <div class="timeline-title">Started CS Degree</div>
+                        <p class="timeline-description secondary">
+                            Began Computer Science undergraduate studies. Exposure to programming fundamentals, OOP, and basic data structures.
+                        </p>
+                        <span class="timeline-tag">University</span>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-date">2022</div>
+                        <div class="timeline-title">First Lines of Code</div>
+                        <p class="timeline-description secondary">
+                            Wrote my first program. Started with Python and immediately fell in love with problem-solving through code.
+                        </p>
+                        <span class="timeline-tag">Beginning</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section id="about" class="fade-in-section">
+            <div class="content-wrapper">
+                <h2>About</h2>
+
+                <p class="text-body secondary">
+                    CS undergraduate rebuilding my foundations from first principles — focusing on clarity over speed. Interested in systems, data structures, and applying ML to real problems.
                 </p>
-                <ul class="values-list">
-                    <li>— Understanding before optimization</li>
-                    <li>— Building from scratch to expose mechanics</li>
-                    <li>— Consistent progress over shortcuts</li>
-                    <li>— Simple systems over opaque complexity</li>
-                </ul>
-            </div>
-        </div>
-    </section>
 
-    <!-- Projects Section -->
-    <section id="projects">
-        <div class="content-wrapper-wide">
-            <h2>Projects</h2>
-            <div class="projects-grid" id="projectsGrid">
-                <!-- Project cards will be inserted here by JavaScript -->
-            </div>
-        </div>
-    </section>
+                <div class="divider"></div>
 
-    <!-- Skills Section -->
-    <section id="skills">
-        <div class="content-wrapper-wide">
-            <h2>Skills</h2>
-            
-            <div class="skills-grid">
-                <!-- Languages -->
-                <div class="skill-category">
-                    <div class="skill-category-header">
-                        <div class="skill-category-icon">
-                            <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
-                                <polyline points="16 18 22 12 16 6"></polyline>
-                                <polyline points="8 6 2 12 8 18"></polyline>
-                            </svg>
+                <div class="secondary">
+                    <p style="margin-bottom: 1rem; font-weight: 500; text-align: left;">
+                        What I value:
+                    </p>
+                    <ul class="values-list">
+                        <li>— Understanding before optimization</li>
+                        <li>— Building from scratch to expose mechanics</li>
+                        <li>— Consistent progress over shortcuts</li>
+                        <li>— Simple systems over opaque complexity</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Skills Section -->
+        <section id="skills" class="fade-in-section">
+            <div class="content-wrapper-wide">
+                <h2>Skills</h2>
+                
+                <div class="skills-grid">
+                    <!-- Languages -->
+                    <div class="skill-category">
+                        <div class="skill-category-header">
+                            <div class="skill-category-icon">
+                                <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
+                                    <polyline points="16 18 22 12 16 6"></polyline>
+                                    <polyline points="8 6 2 12 8 18"></polyline>
+                                </svg>
+                            </div>
+                            <h3 class="skill-category-title">Languages</h3>
                         </div>
-                        <h3 class="skill-category-title">Languages</h3>
+                        <div class="skill-pills">
+                            <span class="skill-pill primary">Python</span>
+                            <span class="skill-pill">C</span>
+                            <span class="skill-pill">C++</span>
+                            <span class="skill-pill">SQL</span>
+                        </div>
                     </div>
-                    <div class="skill-pills">
-                        <span class="skill-pill primary">Python</span>
-                        <span class="skill-pill">C</span>
-                        <span class="skill-pill">C++</span>
-                        <span class="skill-pill">SQL</span>
+
+                    <!-- Core CS -->
+                    <div class="skill-category">
+                        <div class="skill-category-header">
+                            <div class="skill-category-icon">
+                                <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
+                                    <circle cx="12" cy="12" r="10"></circle>
+                                    <polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"></polygon>
+                                </svg>
+                            </div>
+                            <h3 class="skill-category-title">Core CS</h3>
+                        </div>
+                        <div class="skill-pills">
+                            <span class="skill-pill primary">DSA</span>
+                            <span class="skill-pill">OOP</span>
+                            <span class="skill-pill">DBMS</span>
+                            <span class="skill-pill">Recursion</span>
+                        </div>
+                    </div>
+
+                    <!-- Tools -->
+                    <div class="skill-category">
+                        <div class="skill-category-header">
+                            <div class="skill-category-icon">
+                                <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
+                                    <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"></path>
+                                </svg>
+                            </div>
+                            <h3 class="skill-category-title">Tools</h3>
+                        </div>
+                        <div class="skill-pills">
+                            <span class="skill-pill primary">Git</span>
+                            <span class="skill-pill primary">Linux</span>
+                            <span class="skill-pill">GitHub</span>
+                            <span class="skill-pill">VS Code</span>
+                            <span class="skill-pill">Bash</span>
+                        </div>
+                    </div>
+
+                    <!-- Data Structures -->
+                    <div class="skill-category">
+                        <div class="skill-category-header">
+                            <div class="skill-category-icon">
+                                <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
+                                    <line x1="8" y1="6" x2="21" y2="6"></line>
+                                    <line x1="8" y1="12" x2="21" y2="12"></line>
+                                    <line x1="8" y1="18" x2="21" y2="18"></line>
+                                    <line x1="3" y1="6" x2="3.01" y2="6"></line>
+                                    <line x1="3" y1="12" x2="3.01" y2="12"></line>
+                                    <line x1="3" y1="18" x2="3.01" y2="18"></line>
+                                </svg>
+                            </div>
+                            <h3 class="skill-category-title">Data Structures</h3>
+                        </div>
+                        <div class="skill-pills">
+                            <span class="skill-pill">Arrays</span>
+                            <span class="skill-pill">Stacks</span>
+                            <span class="skill-pill">Queues</span>
+                            <span class="skill-pill">Linked Lists</span>
+                        </div>
                     </div>
                 </div>
 
-                <!-- Core CS -->
-                <div class="skill-category">
-                    <div class="skill-category-header">
-                        <div class="skill-category-icon">
-                            <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
-                                <circle cx="12" cy="12" r="10"></circle>
-                                <polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"></polygon>
-                            </svg>
-                        </div>
-                        <h3 class="skill-category-title">Core CS</h3>
+                <!-- Currently Learning -->
+                <div class="learning-section">
+                    <div class="learning-header">
+                        <span class="learning-icon">📚</span>
+                        <span class="learning-title">Currently Learning</span>
                     </div>
-                    <div class="skill-pills">
-                        <span class="skill-pill primary">DSA</span>
-                        <span class="skill-pill">OOP</span>
-                        <span class="skill-pill">DBMS</span>
-                        <span class="skill-pill">Recursion</span>
+                    <div class="learning-items">
+                        <span class="skill-pill learning">Advanced DSA</span>
+                        <span class="skill-pill learning">Clean Code</span>
+                        <span class="skill-pill learning">System Design Basics</span>
                     </div>
-                </div>
 
-                <!-- Tools -->
-                <div class="skill-category">
-                    <div class="skill-category-header">
-                        <div class="skill-category-icon">
-                            <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
-                                <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"></path>
-                            </svg>
-                        </div>
-                        <h3 class="skill-category-title">Tools</h3>
+                    <div class="skills-divider">
+                        <span class="skills-divider-line"></span>
+                        <span class="skills-divider-text">Up Next</span>
+                        <span class="skills-divider-line"></span>
                     </div>
-                    <div class="skill-pills">
-                        <span class="skill-pill primary">Git</span>
-                        <span class="skill-pill primary">Linux</span>
-                        <span class="skill-pill">GitHub</span>
-                        <span class="skill-pill">VS Code</span>
-                        <span class="skill-pill">Bash</span>
-                    </div>
-                </div>
 
-                <!-- Data Structures -->
-                <div class="skill-category">
-                    <div class="skill-category-header">
-                        <div class="skill-category-icon">
-                            <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
-                                <line x1="8" y1="6" x2="21" y2="6"></line>
-                                <line x1="8" y1="12" x2="21" y2="12"></line>
-                                <line x1="8" y1="18" x2="21" y2="18"></line>
-                                <line x1="3" y1="6" x2="3.01" y2="6"></line>
-                                <line x1="3" y1="12" x2="3.01" y2="12"></line>
-                                <line x1="3" y1="18" x2="3.01" y2="18"></line>
-                            </svg>
-                        </div>
-                        <h3 class="skill-category-title">Data Structures</h3>
-                    </div>
-                    <div class="skill-pills">
-                        <span class="skill-pill">Arrays</span>
-                        <span class="skill-pill">Stacks</span>
-                        <span class="skill-pill">Queues</span>
-                        <span class="skill-pill">Linked Lists</span>
+                    <div class="learning-items">
+                        <span class="skill-pill">Machine Learning</span>
+                        <span class="skill-pill">Data Analysis</span>
+                        <span class="skill-pill">Algorithms</span>
                     </div>
                 </div>
             </div>
+        </section>
 
-            <!-- Currently Learning -->
-            <div class="learning-section">
-                <div class="learning-header">
-                    <span class="learning-icon">📚</span>
-                    <span class="learning-title">Currently Learning</span>
-                </div>
-                <div class="learning-items">
-                    <span class="skill-pill learning">Advanced DSA</span>
-                    <span class="skill-pill learning">Clean Code</span>
-                    <span class="skill-pill learning">System Design Basics</span>
-                </div>
-
-                <div class="skills-divider">
-                    <span class="skills-divider-line"></span>
-                    <span class="skills-divider-text">Up Next</span>
-                    <span class="skills-divider-line"></span>
-                </div>
-
-                <div class="learning-items">
-                    <span class="skill-pill">Machine Learning</span>
-                    <span class="skill-pill">Data Analysis</span>
-                    <span class="skill-pill">Algorithms</span>
+        <!-- Contact Section -->
+        <section id="contact" class="fade-in-section">
+            <div class="content-wrapper">
+                <h2>Contact</h2>
+                <div class="contact-info secondary">
+                    <p>
+                        <span style="font-weight: 500;">Email:</span>
+                        <a href="mailto:karsayem@gmail.com">karsayem@gmail.com</a>
+                    </p>
+                    <p>
+                        <span style="font-weight: 500;">GitHub:</span>
+                        <a href="https://github.com/arsayem53" target="_blank" rel="noopener noreferrer">github.com/arsayem53</a>
+                    </p>
+                    <p>
+                        <span style="font-weight: 500;">LinkedIn:</span>
+                        <a href="https://www.linkedin.com/in/ashiqur-rahman-sayem-1a5553300/" target="_blank" rel="noopener noreferrer">linkedin.com/in/ashiqur-rahman-sayem</a>
+                    </p>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- Contact Section -->
-    <section id="contact">
-        <div class="content-wrapper">
-            <h2>Contact</h2>
-            <div class="contact-info secondary">
-                <p>
-                    <span style="font-weight: 500;">Email:</span>
-                    <a href="mailto:karsayem@gmail.com">karsayem@gmail.com</a>
-                </p>
-                <p>
-                    <span style="font-weight: 500;">GitHub:</span>
-                    <a href="https://github.com/arsayem53" target="_blank" rel="noopener noreferrer">github.com/arsayem53</a>
-                </p>
-                <p>
-                    <span style="font-weight: 500;">LinkedIn:</span>
-                    <a href="https://www.linkedin.com/in/ashiqur-rahman-sayem-1a5553300/" target="_blank" rel="noopener noreferrer">linkedin.com/in/ashiqur-rahman-sayem</a>
-                </p>
-            </div>
-        </div>
-    </section>
+    </main>
+
+    <!-- Back to Top Button -->
+    <button class="back-to-top" id="backToTop" onclick="scrollToSection('home')" aria-label="Back to top">
+        <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
+            <polyline points="18 15 12 9 6 15"></polyline>
+        </svg>
+    </button>
 
     <!-- Footer -->
     <footer>
@@ -1459,7 +1925,62 @@
     </footer>
 
     <script>
-        // Projects data with full details
+        // ================================
+        // Theme Management with Persistence
+        // ================================
+        
+        // Check for saved theme or system preference
+        function getPreferredTheme() {
+            const savedTheme = localStorage.getItem('theme');
+            if (savedTheme) {
+                return savedTheme;
+            }
+            // Check system preference
+            if (window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches) {
+                return 'light';
+            }
+            return 'dark';
+        }
+
+        // Apply theme
+        function applyTheme(theme) {
+            const body = document.body;
+            const sunIcon = document.querySelector('.sun-icon');
+            const moonIcon = document.querySelector('.moon-icon');
+            
+            body.classList.remove('dark', 'light');
+            body.classList.add(theme);
+            
+            if (theme === 'light') {
+                sunIcon.style.display = 'block';
+                moonIcon.style.display = 'none';
+            } else {
+                sunIcon.style.display = 'none';
+                moonIcon.style.display = 'block';
+            }
+            
+            localStorage.setItem('theme', theme);
+        }
+
+        // Toggle theme
+        function toggleTheme() {
+            const currentTheme = document.body.classList.contains('dark') ? 'dark' : 'light';
+            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+            applyTheme(newTheme);
+        }
+
+        // Listen for system theme changes
+        if (window.matchMedia) {
+            window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', e => {
+                if (!localStorage.getItem('theme')) {
+                    applyTheme(e.matches ? 'dark' : 'light');
+                }
+            });
+        }
+
+        // ================================
+        // Projects Data
+        // ================================
         const projects = [
             {
                 title: "Advanced Content Tracker",
@@ -1490,26 +2011,9 @@
             }
         ];
 
-        // Theme toggle
-        function toggleTheme() {
-            const body = document.body;
-            const sunIcon = document.querySelector('.sun-icon');
-            const moonIcon = document.querySelector('.moon-icon');
-            
-            if (body.classList.contains('dark')) {
-                body.classList.remove('dark');
-                body.classList.add('light');
-                sunIcon.style.display = 'block';
-                moonIcon.style.display = 'none';
-            } else {
-                body.classList.remove('light');
-                body.classList.add('dark');
-                sunIcon.style.display = 'none';
-                moonIcon.style.display = 'block';
-            }
-        }
-
-        // Mobile menu toggle
+        // ================================
+        // Mobile Menu
+        // ================================
         function toggleMobileMenu() {
             const menu = document.getElementById('mobileMenu');
             const menuIcon = document.querySelector('.menu-icon');
@@ -1525,12 +2029,16 @@
             }
         }
 
-        // Scroll to section
+        // ================================
+        // Scroll Functions
+        // ================================
         function scrollToSection(id) {
             document.getElementById(id).scrollIntoView({ behavior: 'smooth' });
         }
 
-        // Render project cards with expandable details
+        // ================================
+        // Render Projects
+        // ================================
         function renderProjects() {
             const grid = document.getElementById('projectsGrid');
             grid.innerHTML = projects.map((p, index) => `
@@ -1570,16 +2078,55 @@
             `).join('');
         }
 
-        // Toggle project card expansion
         function toggleProject(index, event) {
             if (event.target.closest('.card-link')) return;
             const cards = document.querySelectorAll('.project-card');
             cards[index].classList.toggle('expanded');
         }
 
-        // Active nav link on scroll
+        // ================================
+        // Scroll Progress Bar
+        // ================================
+        function updateScrollProgress() {
+            const scrollProgress = document.getElementById('scrollProgress');
+            const scrollTop = window.scrollY;
+            const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+            const scrollPercent = (scrollTop / docHeight) * 100;
+            scrollProgress.style.width = scrollPercent + '%';
+        }
+
+        // ================================
+        // Back to Top Button
+        // ================================
+        function updateBackToTop() {
+            const backToTop = document.getElementById('backToTop');
+            if (window.scrollY > 500) {
+                backToTop.classList.add('visible');
+            } else {
+                backToTop.classList.remove('visible');
+            }
+        }
+
+        // ================================
+        // Navbar Hide/Show
+        // ================================
+        let lastScrollY = window.scrollY;
+        const nav = document.querySelector('nav');
+
+        function handleNavbar() {
+            if (window.scrollY > lastScrollY && window.scrollY > 100) {
+                nav.style.transform = 'translateY(-100%)';
+            } else {
+                nav.style.transform = 'translateY(0)';
+            }
+            lastScrollY = window.scrollY;
+        }
+
+        // ================================
+        // Active Nav Link
+        // ================================
         function updateActiveNav() {
-            const sections = ['home', 'projects', 'about', 'skills', 'contact'];
+            const sections = ['home', 'projects', 'journey', 'about', 'skills', 'contact'];
             const navLinks = document.querySelectorAll('.nav-link');
             
             let current = '';
@@ -1601,23 +2148,55 @@
             });
         }
 
-        // Navbar hide/show on scroll
-        let lastScrollY = window.scrollY;
-        const nav = document.querySelector('nav');
+        // ================================
+        // Lazy Load / Fade-in on Scroll
+        // ================================
+        function initFadeInSections() {
+            const fadeElements = document.querySelectorAll('.fade-in-section');
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            });
 
+            fadeElements.forEach(el => observer.observe(el));
+        }
+
+        // ================================
+        // Combined Scroll Handler
+        // ================================
         function handleScroll() {
-            if (window.scrollY > lastScrollY && window.scrollY > 100) {
-                nav.style.transform = 'translateY(-100%)';
-            } else {
-                nav.style.transform = 'translateY(0)';
-            }
-            lastScrollY = window.scrollY;
+            updateScrollProgress();
+            updateBackToTop();
+            handleNavbar();
             updateActiveNav();
         }
 
+        // ================================
         // Initialize
-        window.addEventListener('scroll', handleScroll);
-        renderProjects();
+        // ================================
+        document.addEventListener('DOMContentLoaded', () => {
+            // Apply saved/preferred theme
+            applyTheme(getPreferredTheme());
+            
+            // Render projects
+            renderProjects();
+            
+            // Initialize fade-in sections
+            initFadeInSections();
+            
+            // Add scroll listener
+            window.addEventListener('scroll', handleScroll, { passive: true });
+            
+            // Initial calls
+            handleScroll();
+        });
     </script>
 </body>
 </html>
