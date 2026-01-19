@@ -80,19 +80,18 @@
             border-bottom: 1px solid #e5e5e5;
         }
 
-nav {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    padding: 1.5rem 2rem;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    z-index: 1000;
-    transition: transform 0.3s ease, background-color 0.3s, border-color 0.3s;
-}
-
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            padding: 1.5rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            transition: transform 0.3s ease, background-color 0.3s, border-color 0.3s;
+        }
 
         .logo {
             font-family: 'JetBrains Mono', monospace;
@@ -182,8 +181,9 @@ nav {
         }
 
         .light .mobile-nav-toggle {
-           color: #0891b2;
-}
+            color: #0891b2;
+        }
+
         .mobile-menu {
             display: none;
             position: fixed;
@@ -239,6 +239,12 @@ nav {
             align-items: center;
             text-align: center;
             padding: 6rem 2rem;
+        }
+
+        /* Reduce min-height for smaller sections */
+        #about, #skills, #contact {
+            min-height: auto;
+            padding: 5rem 2rem;
         }
 
         h1 {
@@ -362,7 +368,7 @@ nav {
 
         .divider {
             height: 1px;
-            margin: 2.5rem 0;
+            margin: 2rem 0;
         }
 
         .dark .divider {
@@ -373,15 +379,10 @@ nav {
             background-color: #e5e5e5;
         }
 
-        .project-divider {
-            height: 1px;
-            margin-bottom: 1.5rem;
-        }
-
         .text-body {
             font-size: clamp(1rem, 2.5vw, 1.1rem);
             line-height: 1.75;
-            margin-bottom: 2rem;
+            margin-bottom: 1.5rem;
             text-align: left;
         }
 
@@ -394,7 +395,7 @@ nav {
         }
 
         .values-list li {
-            margin-bottom: 0.75rem;
+            margin-bottom: 0.5rem;
         }
 
         /* Project Cards Styles */
@@ -410,6 +411,7 @@ nav {
             transition: transform 0.2s, border-color 0.3s;
             display: flex;
             flex-direction: column;
+            cursor: pointer;
         }
 
         .dark .project-card {
@@ -466,8 +468,7 @@ nav {
         .project-card .card-description {
             font-size: 0.95rem;
             line-height: 1.6;
-            margin-bottom: 1.25rem;
-            flex-grow: 1;
+            margin-bottom: 1rem;
         }
 
         .project-card .card-link {
@@ -478,6 +479,7 @@ nav {
             gap: 0.4rem;
             transition: gap 0.2s;
             align-self: flex-start;
+            margin-top: auto;
         }
 
         .project-card .card-link:hover {
@@ -492,8 +494,106 @@ nav {
             color: #0891b2;
         }
 
+        /* Expandable card styles */
+        .project-card .card-expanded {
+            display: none;
+            margin-top: 1.25rem;
+            padding-top: 1.25rem;
+            border-top: 1px solid;
+        }
+
+        .dark .project-card .card-expanded {
+            border-color: #262626;
+        }
+
+        .light .project-card .card-expanded {
+            border-color: #e5e5e5;
+        }
+
+        .project-card.expanded .card-expanded {
+            display: block;
+            animation: expand-fade 0.3s ease;
+        }
+
+        @keyframes expand-fade {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .project-card.expanded .card-description {
+            display: none;
+        }
+
+        .project-card .expand-label {
+            font-size: 0.8rem;
+            margin-top: 0.75rem;
+            opacity: 0.6;
+            font-family: 'JetBrains Mono', monospace;
+            transition: opacity 0.2s;
+        }
+
+        .project-card:hover .expand-label {
+            opacity: 1;
+        }
+
+        .project-card.expanded .expand-label {
+            display: none;
+        }
+
+        .project-card .collapse-label {
+            display: none;
+            font-size: 0.8rem;
+            margin-top: 0.75rem;
+            opacity: 0.6;
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        .project-card.expanded .collapse-label {
+            display: block;
+        }
+
+        .project-card .detail-section {
+            margin-bottom: 1rem;
+        }
+
+        .project-card .detail-label {
+            font-weight: 500;
+            font-size: 0.85rem;
+            margin-bottom: 0.4rem;
+        }
+
+        .dark .detail-label {
+            color: #06b6d4;
+        }
+
+        .light .detail-label {
+            color: #0891b2;
+        }
+
+        .project-card .detail-text {
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+
+        .project-card .detail-list {
+            list-style: none;
+            padding: 0;
+            font-size: 0.9rem;
+            line-height: 1.7;
+        }
+
+        .project-card .detail-list li {
+            margin-bottom: 0.3rem;
+        }
+
         .skills-section {
-            margin-bottom: 3rem;
+            margin-bottom: 2.5rem;
         }
 
         .skills-section:last-child {
@@ -542,6 +642,52 @@ nav {
             color: #0891b2;
         }
 
+        /* Footer styles */
+        footer {
+            padding: 2rem;
+            text-align: center;
+            font-size: 0.85rem;
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        .dark footer {
+            color: #525252;
+            border-top: 1px solid #262626;
+        }
+
+        .light footer {
+            color: #a8a8a8;
+            border-top: 1px solid #e5e5e5;
+        }
+
+        footer a {
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .dark footer a {
+            color: #525252;
+        }
+
+        .light footer a {
+            color: #a8a8a8;
+        }
+
+        .dark footer a:hover {
+            color: #06b6d4;
+        }
+
+        .light footer a:hover {
+            color: #0891b2;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
         @media (max-width: 768px) {
             .desktop-nav {
                 display: none !important;
@@ -566,6 +712,11 @@ nav {
             .project-card {
                 padding: 1.5rem;
             }
+
+            .footer-links {
+                flex-direction: column;
+                gap: 0.75rem;
+            }
         }
 
         .icon {
@@ -577,215 +728,248 @@ nav {
             width: 20px;
             height: 20px;
         }
+
         /* ================================
-   Scorpion-style Background Layer
-   CSS ONLY — OPTIONAL
-   ================================ */
+           Scorpion-style Background Layer
+           ================================ */
 
-/* Background container */
-body.dark::before {
-    content: "";
-    position: fixed;
-    inset: 0;
-    z-index: -1;
-    pointer-events: none;
+        body.dark::before {
+            content: "";
+            position: fixed;
+            inset: 0;
+            z-index: -1;
+            pointer-events: none;
+            background:
+                linear-gradient(
+                    rgba(6, 182, 212, 0.08) 1px,
+                    transparent 1px
+                ),
+                linear-gradient(
+                    90deg,
+                    rgba(6, 182, 212, 0.08) 1px,
+                    transparent 1px
+                );
+            background-size: 32px 32px;
+            opacity: 0.55;
+        }
 
-    background:
-        linear-gradient(
-            rgba(6, 182, 212, 0.08) 1px,
-            transparent 1px
-        ),
-        linear-gradient(
-            90deg,
-            rgba(6, 182, 212, 0.08) 1px,
-            transparent 1px
-        );
+        body.dark::after {
+            content: "";
+            position: fixed;
+            top: -100%;
+            left: 0;
+            width: 100%;
+            height: 200%;
+            z-index: -1;
+            pointer-events: none;
+            background: linear-gradient(
+                to bottom,
+                transparent 0%,
+                rgba(6, 182, 212, 0.14) 50%,
+                transparent 100%
+            );
+            animation: scorpion-scan 9s linear infinite;
+        }
 
-    background-size: 32px 32px; /* tighter grid */
-    opacity: 0.55;              /* more presence */
-}
+        @keyframes scorpion-scan {
+            0% {
+                transform: translateY(-50%);
+            }
+            100% {
+                transform: translateY(50%);
+            }
+        }
 
-/* Scanning line */
-body.dark::after {
-    content: "";
-    position: fixed;
-    top: -100%;
-    left: 0;
-    width: 100%;
-    height: 200%;
-    z-index: -1;
-    pointer-events: none;
+        body.light::before,
+        body.light::after {
+            display: none;
+        }
 
-    background: linear-gradient(
-        to bottom,
-        transparent 0%,
-        rgba(6, 182, 212, 0.14) 50%,
-        transparent 100%
-    );
+        /* ================================
+           Scorpion Button Data Pulse
+           ================================ */
 
-    animation: scorpion-scan 9s linear infinite;
-}
+        .btn {
+            position: relative;
+            overflow: hidden;
+        }
 
+        .btn::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(
+                120deg,
+                transparent,
+                rgba(6, 182, 212, 0.25),
+                transparent
+            );
+            transform: translateX(-120%);
+            transition: transform 0.6s ease;
+        }
 
-/* Animation */
-@keyframes scorpion-scan {
-    0% {
-        transform: translateY(-50%);
-    }
-    100% {
-        transform: translateY(50%);
-    }
-}
+        .btn:hover::after {
+            transform: translateX(120%);
+        }
 
-/* Disable effect in light mode */
-body.light::before,
-body.light::after {
-    display: none;
-}
+        /* ================================
+           Terminal Cursor Effect
+           ================================ */
 
-/* ================================
-   Scorpion Button Data Pulse
-   ================================ */
+        #home h1::after {
+            content: "▌";                
+            margin-left: 0.2rem;
+            animation: cursor-blink 1.6s steps(1) infinite; 
+            opacity: 1;
+        }
 
-.btn {
-    position: relative;
-    overflow: hidden;
-}
+        @keyframes cursor-blink {
+            0%, 50% {
+                opacity: 1;
+            }
+            50.01%, 100% {
+                opacity: 0;
+            }
+        }
 
-.btn::after {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(
-        120deg,
-        transparent,
-        rgba(6, 182, 212, 0.25),
-        transparent
-    );
-    transform: translateX(-120%);
-    transition: transform 0.6s ease;
-}
+        /* ================================
+           Project Card Animation
+           ================================ */
 
-.btn:hover::after {
-    transform: translateX(120%);
-}
+        .project-card {
+            animation: card-fade 0.35s ease;
+        }
 
-/* ================================
-   Terminal Cursor Effect
-   ================================ */
+        @keyframes card-fade {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
 
-#home h1::after {
-    content: "▌";                
-    margin-left: 0.2rem;
-    animation: cursor-blink 1.6s steps(1) infinite; 
-    opacity: 1;
-}
+        @media (max-width: 768px) {
+            nav {
+                justify-content: flex-start;
+                gap: 1rem;
+            }
 
-@keyframes cursor-blink {
-    0%, 50% {
-        opacity: 1;
-    }
-    50.01%, 100% {
-        opacity: 0;
-    }
-}
-/* ================================
-   Project Card Animation
-   ================================ */
+            .logo {
+                text-align: left;
+                font-size: 1rem;
+            }
+        }
 
-.project-card {
-    animation: card-fade 0.35s ease;
-}
+        @media (max-width: 768px) {
+            #home {
+                align-items: flex-start;
+                text-align: left;
+            }
 
-@keyframes card-fade {
-    from {
-        opacity: 0;
-        transform: translateY(10px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
+            #home h1 {
+                font-size: clamp(2.8rem, 9vw, 3.6rem);
+            }
 
-@media (max-width: 768px) {
-    nav {
-        justify-content: flex-start;
-        gap: 1rem;
-    }
+            #home .subtitle,
+            #home .description {
+                text-align: left;
+            }
 
-    .logo {
-        text-align: left;
-        font-size: 1rem; /* slightly smaller for mobile */
-    }
-}
-@media (max-width: 768px) {
-    #home {
-        align-items: flex-start;
-        text-align: left;
-    }
+            .btn-group {
+                justify-content: flex-start;
+            }
+        }
 
-    #home h1 {
-        font-size: clamp(2.8rem, 9vw, 3.6rem);
-    }
+        @media (max-width: 768px) {
+            section h2 {
+                text-align: left;
+            }
+        }
 
-    #home .subtitle,
-    #home .description {
-        text-align: left;
-    }
+        .stackable {
+            display: flex;
+            justify-content: center;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+        }
 
-    .btn-group {
-        justify-content: flex-start;
-    }
-}
-@media (max-width: 768px) {
-    section h2 {
-        text-align: left;
-    }
-}
+        .stackable .dot {
+            opacity: 0.7;
+        }
 
-.stackable {
-    display: flex;
-    justify-content: center;
-    gap: 0.5rem;
-    flex-wrap: wrap;
-}
+        @media (max-width: 768px) {
+            .stackable {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 0.25rem;
+            }
 
-.stackable .dot {
-    opacity: 0.7;
-}
+            .stackable .dot {
+                padding-left: 0.5rem;
+            }
+        }
 
-/* Mobile only */
-@media (max-width: 768px) {
-    .stackable {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 0.25rem;
-    }
+        .sep::before {
+            content: "|";
+            opacity: 0.7;
+        }
 
-    .stackable .dot {
-        padding-left: 0.5rem;
-    }
-}
+        /* Currently working on badge */
+        .status-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.85rem;
+            font-family: 'JetBrains Mono', monospace;
+            padding: 0.5rem 1rem;
+            margin-bottom: 2rem;
+            border-radius: 2px;
+        }
 
-.sep::before {
-    content: "|";
-    opacity: 0.7;
-    animation: blink 1.2s steps(1) infinite;
-}
+        .dark .status-badge {
+            background: rgba(6, 182, 212, 0.1);
+            color: #06b6d4;
+            border: 1px solid rgba(6, 182, 212, 0.3);
+        }
 
+        .light .status-badge {
+            background: rgba(8, 145, 178, 0.1);
+            color: #0891b2;
+            border: 1px solid rgba(8, 145, 178, 0.3);
+        }
 
-@keyframes cursor-blink {
-    0%, 45% { opacity: 1; }
-    46%, 100% { opacity: 0; }
-}
+        .status-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            animation: pulse 2s infinite;
+        }
 
+        .dark .status-dot {
+            background: #06b6d4;
+        }
+
+        .light .status-dot {
+            background: #0891b2;
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                opacity: 1;
+            }
+            50% {
+                opacity: 0.4;
+            }
+        }
     </style>
 </head>
 <body class="dark">
 
     <!-- Navigation -->
-    <nav aria-label="Primary navigation"><!-- UPDATED: aria-label -->
+    <nav aria-label="Primary navigation">
         <button class="logo" onclick="scrollToSection('home')" aria-label="Go to home section">
             &lt;sayem /&gt;
         </button>
@@ -850,25 +1034,25 @@ body.light::after {
     </div>
 
     <!-- Home Section -->
-<section id="home">
+    <section id="home">
         <h1>@ar-sayem:~$</h1>
 
-        <!-- UPDATED: stronger identity -->
         <p class="subtitle secondary">
             Computer Science Undergraduate
         </p>
 
-        <!-- UPDATED: sharper, intentional tagline -->
-<p class="description secondary stackable">
-    <span>&lt; Systems &gt;</span>
-    <span class="sep"></span>
-    <span>&lt; ML &gt;</span>
-    <span class="sep"></span>
-    <span>&lt; Data Analysis &gt;</span>
-</p>
+        <p class="description secondary stackable">
+            <span>&lt; Systems &gt;</span>
+            <span class="sep"></span>
+            <span>&lt; ML &gt;</span>
+            <span class="sep"></span>
+            <span>&lt; Data Analysis &gt;</span>
+        </p>
 
-
-
+        <div class="status-badge">
+            <span class="status-dot"></span>
+            <span>Currently: DSA deep-dive</span>
+        </div>
 
         <div class="btn-group">
             <button class="btn btn-primary" onclick="scrollToSection('projects')">
@@ -884,13 +1068,12 @@ body.light::after {
     </section>
 
     <!-- About Section -->
-     <section id="about">
+    <section id="about">
         <div class="content-wrapper">
             <h2>About</h2>
 
-            <!-- UPDATED: tightened language, same meaning -->
             <p class="text-body secondary">
-                I am a Computer Science undergraduate deliberately rebuilding my technical foundations with an emphasis on clarity, correctness, and long-term understanding. After recognizing that coursework completion does not guarantee conceptual mastery, I chose to step back and relearn core computer science principles from first principles. My interests center on problem-solving, fundamental data structures, and the practical application of machine learning for data analysis and socially relevant problems.
+                CS undergraduate rebuilding my foundations from first principles — focusing on clarity over speed. Interested in systems, data structures, and applying ML to real problems.
             </p>
 
             <div class="divider"></div>
@@ -900,10 +1083,10 @@ body.light::after {
                     What I value:
                 </p>
                 <ul class="values-list">
-                    <li>- Understanding before optimization</li>
-                    <li>- Writing implementations from scratch to expose underlying mechanics</li>
-                    <li>- Consistent progress over shortcuts</li>
-                    <li>- Simple, explainable systems over opaque complexity</li>
+                    <li>— Understanding before optimization</li>
+                    <li>— Building from scratch to expose mechanics</li>
+                    <li>— Consistent progress over shortcuts</li>
+                    <li>— Simple systems over opaque complexity</li>
                 </ul>
             </div>
         </div>
@@ -926,34 +1109,31 @@ body.light::after {
             <div class="skills-section">
                 <h3>Core CS</h3>
                 <ul class="skills-list secondary">
-                    <li>- DSA (arrays, stack, queue, recursion)</li>
-                    <li>- OOP (Python)</li>
-                    <li>- DBMS fundamentals</li>
+                    <li>— DSA (arrays, stack, queue, recursion)</li>
+                    <li>— OOP (Python)</li>
+                    <li>— DBMS fundamentals</li>
                 </ul>
             </div>
             <div class="skills-section">
                 <h3>Tools</h3>
                 <ul class="skills-list secondary">
-                    <li>- Python</li>
-                    <li>- Git & GitHub</li>
-                    <li>- Linux</li>
-                    <li>- C</li>
-                    <li>- C++</li>
-                    <li>- SQL</li>
+                    <li>— Python, C, C++</li>
+                    <li>— Git & GitHub</li>
+                    <li>— Linux, SQL</li>
                 </ul>
             </div>
             <div class="skills-section">
                 <h3>Currently Learning</h3>
                 <ul class="skills-list secondary">
-                    <li>- Core DSA with implementation-first approach</li>
-                    <li>- Clean code and program structure</li>
+                    <li>— Core DSA with implementation-first approach</li>
+                    <li>— Clean code and program structure</li>
                 </ul>
             </div>
             <div class="skills-section">
                 <h3>Learning Next</h3>
                 <ul class="skills-list secondary">
-                    <li>- Advanced DSA</li>
-                    <li>- Machine Learning foundations</li>
+                    <li>— Advanced DSA</li>
+                    <li>— Machine Learning foundations</li>
                 </ul>
             </div>
         </div>
@@ -980,19 +1160,44 @@ body.light::after {
         </div>
     </section>
 
+    <!-- Footer -->
+    <footer>
+        <div class="footer-links">
+            <a href="https://github.com/arsayem53" target="_blank" rel="noopener noreferrer">GitHub</a>
+            <a href="https://www.linkedin.com/in/ashiqur-rahman-sayem-1a5553300/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+            <a href="mailto:karsayem@gmail.com">Email</a>
+        </div>
+        <p>© 2025 Ashiqur Rahman Sayem</p>
+    </footer>
+
     <script>
-        // Projects data
+        // Projects data with full details
         const projects = [
             {
                 title: "Advanced Content Tracker",
                 tags: ["Python", "Linux", "ML", "OCR", "Daemon"],
-                description: "A Linux background daemon that captures screenshots and analyzes them using AI/ML (CLIP, NudeNet, Tesseract OCR). Provides multi-level content detection, productivity scoring, and comprehensive daily/weekly reports. Privacy-first with all processing done locally.",
+                description: "A Linux background daemon that analyzes screen content using AI/ML for productivity tracking.",
+                problem: "Existing time trackers only show which app is open, not what you're actually doing. Watching a tutorial vs. watching memes both show as 'YouTube'.",
+                approach: "Built a daemon that captures screenshots, runs CLIP for image classification, NudeNet for content filtering, and Tesseract for text extraction. All processing happens locally for privacy.",
+                learned: [
+                    "How Linux daemons work (systemd, signals, PID files)",
+                    "Practical ML model integration (CLIP, NudeNet)",
+                    "Privacy-first architecture design",
+                    "Multi-threaded Python with queues"
+                ],
                 github: "https://github.com/arsayem53/advanced-content-tracker"
             },
             {
                 title: "Array Operations (Manual Implementation)",
                 tags: ["Python", "DSA", "Fundamentals"],
-                description: "Implemented insertion, deletion, searching, reversing, and duplicate removal using raw index-based logic. Built to understand element shifting and memory behavior without relying on built-in helpers.",
+                description: "Built array operations from scratch to understand memory behavior.",
+                problem: "Understand how array-based data structures work internally without relying on built-in helpers.",
+                approach: "Implemented insertion, deletion, searching, reversing, and duplicate removal using index-based logic. All operations written manually to understand element shifting.",
+                learned: [
+                    "Why insertions/deletions are costly in arrays",
+                    "How index-based traversal works",
+                    "Where abstraction becomes necessary"
+                ],
                 github: "https://github.com/arsayem53/cse-rebuild/tree/b82d58630a84cee793f67b60eb222d0bedc0aaed/day-2%20python_basic_dsa"
             }
         ];
@@ -1037,17 +1242,37 @@ body.light::after {
             document.getElementById(id).scrollIntoView({ behavior: 'smooth' });
         }
 
-        // Render project cards
+        // Render project cards with expandable details
         function renderProjects() {
             const grid = document.getElementById('projectsGrid');
-            grid.innerHTML = projects.map(p => `
-                <div class="project-card">
+            grid.innerHTML = projects.map((p, index) => `
+                <div class="project-card" onclick="toggleProject(${index}, event)">
                     <h3>${p.title}</h3>
                     <div class="tag-list">
                         ${p.tags.map(t => `<span class="tag">${t}</span>`).join('')}
                     </div>
                     <p class="card-description secondary">${p.description}</p>
-                    <a href="${p.github}" target="_blank" rel="noopener noreferrer" class="card-link">
+                    <p class="expand-label secondary">↓ click to expand</p>
+                    <p class="collapse-label secondary">↑ click to collapse</p>
+                    
+                    <div class="card-expanded">
+                        <div class="detail-section">
+                            <p class="detail-label">Problem:</p>
+                            <p class="detail-text secondary">${p.problem}</p>
+                        </div>
+                        <div class="detail-section">
+                            <p class="detail-label">Approach:</p>
+                            <p class="detail-text secondary">${p.approach}</p>
+                        </div>
+                        <div class="detail-section">
+                            <p class="detail-label">What I Learned:</p>
+                            <ul class="detail-list secondary">
+                                ${p.learned.map(item => `<li>— ${item}</li>`).join('')}
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <a href="${p.github}" target="_blank" rel="noopener noreferrer" class="card-link" onclick="event.stopPropagation()">
                         View Code
                         <svg width="14" height="14" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path d="M7 17L17 7M17 7H7M17 7V17" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
@@ -1057,9 +1282,16 @@ body.light::after {
             `).join('');
         }
 
+        // Toggle project card expansion
+        function toggleProject(index, event) {
+            if (event.target.closest('.card-link')) return;
+            const cards = document.querySelectorAll('.project-card');
+            cards[index].classList.toggle('expanded');
+        }
+
         // Active nav link on scroll
-        window.addEventListener('scroll', () => {
-            const sections = ['home', 'about', 'projects', 'skills', 'contact'];
+        function updateActiveNav() {
+            const sections = ['home', 'projects', 'about', 'skills', 'contact'];
             const navLinks = document.querySelectorAll('.nav-link');
             
             let current = '';
@@ -1067,38 +1299,37 @@ body.light::after {
                 const element = document.getElementById(section);
                 if (element) {
                     const rect = element.getBoundingClientRect();
-                    if (rect.top <= 100 && rect.bottom >= 100) {
+                    if (rect.top <= 150 && rect.bottom >= 150) {
                         current = section;
                     }
                 }
             });
 
-            navLinks.forEach((link, idx) => {
+            navLinks.forEach(link => {
                 link.classList.remove('active');
-                if (sections[idx + 1] === current) {
+                if (link.textContent === current) {
                     link.classList.add('active');
                 }
             });
-        });
-
-        // Initialize
-        renderProjects();
+        }
 
         // Navbar hide/show on scroll
         let lastScrollY = window.scrollY;
         const nav = document.querySelector('nav');
 
-        window.addEventListener('scroll', () => {
-            if (window.scrollY > lastScrollY) {
-                // Scrolling down → hide nav
+        function handleScroll() {
+            if (window.scrollY > lastScrollY && window.scrollY > 100) {
                 nav.style.transform = 'translateY(-100%)';
             } else {
-                // Scrolling up → show nav
                 nav.style.transform = 'translateY(0)';
             }
             lastScrollY = window.scrollY;
-        });
+            updateActiveNav();
+        }
 
+        // Initialize
+        window.addEventListener('scroll', handleScroll);
+        renderProjects();
     </script>
 </body>
 </html>
