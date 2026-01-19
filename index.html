@@ -397,143 +397,99 @@ nav {
             margin-bottom: 0.75rem;
         }
 
-        .project-slider {
+        /* Project Cards Styles */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .project-card {
+            padding: 1.75rem;
+            border: 1px solid;
+            transition: transform 0.2s, border-color 0.3s;
             display: flex;
             flex-direction: column;
-            min-height: 400px;
         }
 
-        .project-content {
-            flex: 1;
-            margin-bottom: 2rem;
-            text-align: left;
-        }
-
-        .project-section {
-            margin-bottom: 1.75rem;
-            text-align: left;
-        }
-
-        .project-label {
-            font-weight: 500;
-            margin-bottom: 0.65rem;
-            font-size: clamp(0.95rem, 2.5vw, 1.05rem);
-        }
-
-        .project-text {
-            line-height: 1.7;
-            font-size: clamp(0.95rem, 2.5vw, 1.05rem);
-        }
-
-        .project-list {
-            list-style: none;
-            padding: 0;
-            font-size: clamp(0.95rem, 2.5vw, 1.05rem);
-            line-height: 1.7;
-        }
-
-        .project-list li {
-            margin-bottom: 0.5rem;
-        }
-
-        .project-nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-top: 2rem;
-            padding-top: 2rem;
-            border-top: 1px solid;
-        }
-
-        .dark .project-nav {
+        .dark .project-card {
             border-color: #262626;
+            background: rgba(10, 10, 10, 0.6);
         }
 
-        .light .project-nav {
+        .light .project-card {
             border-color: #e5e5e5;
+            background: rgba(255, 255, 255, 0.8);
         }
 
-        .nav-btn {
+        .project-card:hover {
+            transform: translateY(-4px);
+        }
+
+        .dark .project-card:hover {
+            border-color: #06b6d4;
+        }
+
+        .light .project-card:hover {
+            border-color: #0891b2;
+        }
+
+        .project-card h3 {
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+        }
+
+        .project-card .tag-list {
             display: flex;
-            align-items: center;
+            flex-wrap: wrap;
             gap: 0.5rem;
-            background: none;
-            border: none;
-            cursor: pointer;
-            font-size: 0.9rem;
-            transition: color 0.2s, transform 0.2s;
+            margin-bottom: 1rem;
         }
 
-        .dark .nav-btn {
-            color: #a8a8a8;
-        }
-
-        .light .nav-btn {
-            color: #525252;
-        }
-
-        .dark .nav-btn:hover {
-            color: #06b6d4;
-            transform: translateX(2px);
-        }
-
-        .light .nav-btn:hover {
-            color: #0891b2;
-            transform: translateX(2px);
-        }
-
-        .nav-btn:first-child:hover {
-            transform: translateX(-2px);
-        }
-
-        .dots {
-            display: flex;
-            gap: 0.5rem;
-            align-items: center;
-        }
-
-        .dot {
-            width: 8px;
-            height: 8px;
-            border-radius: 50%;
-            border: none;
-            cursor: pointer;
-            transition: background-color 0.2s, transform 0.2s;
-        }
-
-        .dot:hover {
-            transform: scale(1.2);
-        }
-
-        .dark .dot {
-            background-color: #262626;
-        }
-
-        .light .dot {
-            background-color: #e5e5e5;
-        }
-
-        .dark .dot.active {
-            background-color: #06b6d4;
-        }
-
-        .light .dot.active {
-            background-color: #0891b2;
-        }
-
-        .project-counter {
-            text-align: center;
-            margin-top: 1rem;
-            font-size: 0.85rem;
+        .project-card .tag {
+            font-size: 0.75rem;
+            padding: 0.25rem 0.6rem;
             font-family: 'JetBrains Mono', monospace;
+            border-radius: 2px;
         }
 
-        .dark .project-counter {
-            color: #a8a8a8;
+        .dark .tag {
+            background: rgba(6, 182, 212, 0.15);
+            color: #06b6d4;
         }
 
-        .light .project-counter {
-            color: #525252;
+        .light .tag {
+            background: rgba(8, 145, 178, 0.1);
+            color: #0891b2;
+        }
+
+        .project-card .card-description {
+            font-size: 0.95rem;
+            line-height: 1.6;
+            margin-bottom: 1.25rem;
+            flex-grow: 1;
+        }
+
+        .project-card .card-link {
+            font-size: 0.9rem;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            transition: gap 0.2s;
+            align-self: flex-start;
+        }
+
+        .project-card .card-link:hover {
+            gap: 0.6rem;
+        }
+
+        .dark .card-link {
+            color: #06b6d4;
+        }
+
+        .light .card-link {
+            color: #0891b2;
         }
 
         .skills-section {
@@ -601,6 +557,14 @@ nav {
 
             section {
                 padding: 4rem 2rem;
+            }
+
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .project-card {
+                padding: 1.5rem;
             }
         }
 
@@ -726,23 +690,24 @@ body.light::after {
     }
 }
 /* ================================
-   Project Transition Effect
+   Project Card Animation
    ================================ */
 
-.project-content {
-    animation: project-fade 0.35s ease;
+.project-card {
+    animation: card-fade 0.35s ease;
 }
 
-@keyframes project-fade {
+@keyframes card-fade {
     from {
         opacity: 0;
-        transform: translateY(6px);
+        transform: translateY(10px);
     }
     to {
         opacity: 1;
         transform: translateY(0);
     }
 }
+
 @media (max-width: 768px) {
     nav {
         justify-content: flex-start;
@@ -948,30 +913,8 @@ body.light::after {
     <section id="projects">
         <div class="content-wrapper-wide">
             <h2>Projects</h2>
-            <div class="project-slider">
-                <div class="project-content" id="projectContent">
-                    <!-- Project content will be inserted here by JavaScript -->
-                </div>
-                <div class="project-nav border">
-                    <button class="nav-btn" onclick="prevProject()">
-                        <svg class="icon-lg" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <polyline points="15 18 9 12 15 6"></polyline>
-                        </svg>
-                        <span>Previous</span>
-                    </button>
-                    <div class="dots" id="projectDots">
-                        <!-- Dots will be inserted here by JavaScript -->
-                    </div>
-                    <button class="nav-btn" onclick="nextProject()">
-                        <span>Next</span>
-                        <svg class="icon-lg" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <polyline points="9 18 15 12 9 6"></polyline>
-                        </svg>
-                    </button>
-                </div>
-                <div class="project-counter secondary" id="projectCounter">
-                    1 / 1
-                </div>
+            <div class="projects-grid" id="projectsGrid">
+                <!-- Project cards will be inserted here by JavaScript -->
             </div>
         </div>
     </section>
@@ -1041,19 +984,18 @@ body.light::after {
         // Projects data
         const projects = [
             {
+                title: "Advanced Content Tracker",
+                tags: ["Python", "Linux", "ML", "OCR", "Daemon"],
+                description: "A Linux background daemon that captures screenshots and analyzes them using AI/ML (CLIP, NudeNet, Tesseract OCR). Provides multi-level content detection, productivity scoring, and comprehensive daily/weekly reports. Privacy-first with all processing done locally.",
+                github: "https://github.com/arsayem53/advanced-content-tracker"
+            },
+            {
                 title: "Array Operations (Manual Implementation)",
-                problem: "Understand how array-based data structures work internally without relying on built-in helpers.",
-                approach: "I implemented insertion, deletion, searching, reversing, and duplicate removal using index-based logic. All operations were written manually to understand element shifting and memory behavior.",
-                learned: [
-                    "Why insertions and deletions are costly in arrays",
-                    "How index-based traversal works",
-                    "Where abstraction becomes necessary"
-                ],
+                tags: ["Python", "DSA", "Fundamentals"],
+                description: "Implemented insertion, deletion, searching, reversing, and duplicate removal using raw index-based logic. Built to understand element shifting and memory behavior without relying on built-in helpers.",
                 github: "https://github.com/arsayem53/cse-rebuild/tree/b82d58630a84cee793f67b60eb222d0bedc0aaed/day-2%20python_basic_dsa"
             }
         ];
-
-        let currentProjectIndex = 0;
 
         // Theme toggle
         function toggleTheme() {
@@ -1095,56 +1037,24 @@ body.light::after {
             document.getElementById(id).scrollIntoView({ behavior: 'smooth' });
         }
 
-        // Project navigation
-        function renderProject() {
-            const project = projects[currentProjectIndex];
-            const content = document.getElementById('projectContent');
-            
-            content.innerHTML = `
-                <h3>${project.title}</h3>
-                <div class="project-divider border"></div>
-                <div class="project-section">
-                    <p class="project-label">Problem:</p>
-                    <p class="project-text secondary">${project.problem}</p>
+        // Render project cards
+        function renderProjects() {
+            const grid = document.getElementById('projectsGrid');
+            grid.innerHTML = projects.map(p => `
+                <div class="project-card">
+                    <h3>${p.title}</h3>
+                    <div class="tag-list">
+                        ${p.tags.map(t => `<span class="tag">${t}</span>`).join('')}
+                    </div>
+                    <p class="card-description secondary">${p.description}</p>
+                    <a href="${p.github}" target="_blank" rel="noopener noreferrer" class="card-link">
+                        View Code
+                        <svg width="14" height="14" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path d="M7 17L17 7M17 7H7M17 7V17" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </a>
                 </div>
-                <div class="project-section">
-                    <p class="project-label">Approach:</p>
-                    <p class="project-text secondary">${project.approach}</p>
-                </div>
-                <div class="project-section">
-                    <p class="project-label">What I Learned:</p>
-                    <ul class="project-list secondary">
-                        ${project.learned.map(item => `<li>- ${item}</li>`).join('')}
-                    </ul>
-                </div>
-                <a href="${project.github}" target="_blank" rel="noopener noreferrer" class="btn btn-primary">
-                    GitHub
-                </a>
-            `;
-
-            // Update dots
-            const dotsContainer = document.getElementById('projectDots');
-            dotsContainer.innerHTML = projects.map((_, idx) => 
-                `<button class="dot ${idx === currentProjectIndex ? 'active' : ''}" onclick="goToProject(${idx})"></button>`
-            ).join('');
-
-            // Update counter
-            document.getElementById('projectCounter').textContent = `${currentProjectIndex + 1} / ${projects.length}`;
-        }
-
-        function nextProject() {
-            currentProjectIndex = (currentProjectIndex + 1) % projects.length;
-            renderProject();
-        }
-
-        function prevProject() {
-            currentProjectIndex = (currentProjectIndex - 1 + projects.length) % projects.length;
-            renderProject();
-        }
-
-        function goToProject(index) {
-            currentProjectIndex = index;
-            renderProject();
+            `).join('');
         }
 
         // Active nav link on scroll
@@ -1172,21 +1082,22 @@ body.light::after {
         });
 
         // Initialize
-        renderProject();
-        // Navbar hide/show on scroll
-let lastScrollY = window.scrollY;
-const nav = document.querySelector('nav');
+        renderProjects();
 
-window.addEventListener('scroll', () => {
-    if (window.scrollY > lastScrollY) {
-        // Scrolling down → hide nav
-        nav.style.transform = 'translateY(-100%)';
-    } else {
-        // Scrolling up → show nav
-        nav.style.transform = 'translateY(0)';
-    }
-    lastScrollY = window.scrollY;
-});
+        // Navbar hide/show on scroll
+        let lastScrollY = window.scrollY;
+        const nav = document.querySelector('nav');
+
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > lastScrollY) {
+                // Scrolling down → hide nav
+                nav.style.transform = 'translateY(-100%)';
+            } else {
+                // Scrolling up → show nav
+                nav.style.transform = 'translateY(0)';
+            }
+            lastScrollY = window.scrollY;
+        });
 
     </script>
 </body>
