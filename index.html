@@ -320,29 +320,34 @@
         }
 
         /* ================================
-           Sections - FIXED SPACING
+           Sections
            ================================ */
         section {
-            padding: 4rem 2rem;
+            padding: 5rem 2rem;
         }
 
-        /* Home section - centered but not forcing full height */
+        /* FIXED: Compact hero section */
         #home {
-            min-height: calc(100vh - 73px); /* Account for navbar */
+            min-height: 100vh;
+            max-height: 100vh;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
             text-align: center;
-            padding-top: 6rem;
-            padding-bottom: 4rem;
-            max-width: 900px;
-            margin: 0 auto;
+            padding: 5rem 2rem;
+            gap: 0;
         }
 
-        /* Other sections - no forced height */
-        #about, #skills, #contact, #journey, #projects {
+        /* Remove min-height from other sections */
+        #about, #skills, #contact, #journey {
             min-height: auto;
+            padding: 4rem 2rem;
+        }
+
+        #projects {
+            min-height: auto;
+            padding: 5rem 2rem;
         }
 
         /* ================================
@@ -386,8 +391,8 @@
 
         h1 {
             font-family: 'JetBrains Mono', monospace;
-            font-size: clamp(2.5rem, 8vw, 4.5rem);
-            margin-bottom: 1rem;
+            font-size: clamp(3rem, 8vw, 4.5rem);
+            margin-bottom: 0.75rem;
             font-weight: 600;
             letter-spacing: -0.02em;
             line-height: 1.1;
@@ -403,8 +408,8 @@
 
         h2 {
             font-family: 'JetBrains Mono', monospace;
-            font-size: clamp(1.75rem, 4vw, 2.5rem);
-            margin-bottom: 2rem;
+            font-size: clamp(2rem, 5vw, 2.75rem);
+            margin-bottom: 2.5rem;
             font-weight: 500;
             letter-spacing: -0.01em;
             text-align: center;
@@ -412,13 +417,14 @@
 
         h3 {
             font-family: 'JetBrains Mono', monospace;
-            font-size: clamp(1.1rem, 2.5vw, 1.3rem);
+            font-size: clamp(1.15rem, 3vw, 1.4rem);
             margin-bottom: 1rem;
             font-weight: 500;
         }
 
+        /* FIXED: Reduced margins */
         .subtitle {
-            font-size: clamp(1.1rem, 3vw, 1.35rem);
+            font-size: clamp(1.15rem, 3vw, 1.35rem);
             margin-bottom: 0.5rem;
             max-width: 600px;
             font-weight: 500;
@@ -426,10 +432,58 @@
         }
 
         .description {
-            font-size: clamp(1rem, 2.5vw, 1.15rem);
-            margin-bottom: 1.5rem;
-            max-width: 600px;
+            font-size: clamp(1rem, 2.5vw, 1.1rem);
+            margin-bottom: 1.25rem;
+            max-width: 650px;
             line-height: 1.6;
+        }
+
+        /* FIXED: Reduced badge margin */
+        .status-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.85rem;
+            font-family: 'JetBrains Mono', monospace;
+            padding: 0.5rem 1rem;
+            margin-bottom: 1.25rem;
+            border-radius: 2px;
+        }
+
+        .dark .status-badge {
+            background: rgba(6, 182, 212, 0.1);
+            color: #06b6d4;
+            border: 1px solid rgba(6, 182, 212, 0.3);
+        }
+
+        .light .status-badge {
+            background: rgba(8, 145, 178, 0.1);
+            color: #0891b2;
+            border: 1px solid rgba(8, 145, 178, 0.3);
+        }
+
+        .status-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            animation: pulse 2s infinite;
+        }
+
+        .dark .status-dot {
+            background: #06b6d4;
+        }
+
+        .light .status-dot {
+            background: #0891b2;
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                opacity: 1;
+            }
+            50% {
+                opacity: 0.4;
+            }
         }
 
         .btn-group {
@@ -507,7 +561,7 @@
 
         .divider {
             height: 1px;
-            margin: 1.5rem 0;
+            margin: 2rem 0;
         }
 
         .dark .divider {
@@ -519,22 +573,22 @@
         }
 
         .text-body {
-            font-size: clamp(0.95rem, 2.5vw, 1.05rem);
+            font-size: clamp(1rem, 2.5vw, 1.1rem);
             line-height: 1.75;
-            margin-bottom: 1.25rem;
+            margin-bottom: 1.5rem;
             text-align: left;
         }
 
         .values-list {
-            font-size: clamp(0.9rem, 2.5vw, 1rem);
-            line-height: 1.9;
+            font-size: clamp(0.95rem, 2.5vw, 1.05rem);
+            line-height: 2;
             list-style: none;
             padding: 0;
             text-align: left;
         }
 
         .values-list li {
-            margin-bottom: 0.4rem;
+            margin-bottom: 0.5rem;
         }
 
         /* ================================
@@ -542,12 +596,12 @@
            ================================ */
         .projects-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 1.25rem;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 1.5rem;
         }
 
         .project-card {
-            padding: 1.5rem;
+            padding: 1.75rem;
             border: 1px solid;
             transition: transform 0.3s ease, border-color 0.3s, box-shadow 0.3s ease;
             display: flex;
@@ -582,20 +636,20 @@
         }
 
         .project-card h3 {
-            margin-bottom: 0.75rem;
-            font-size: 1.05rem;
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
         }
 
         .project-card .tag-list {
             display: flex;
             flex-wrap: wrap;
-            gap: 0.4rem;
-            margin-bottom: 0.75rem;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
         }
 
         .project-card .tag {
-            font-size: 0.7rem;
-            padding: 0.2rem 0.5rem;
+            font-size: 0.75rem;
+            padding: 0.25rem 0.6rem;
             font-family: 'JetBrains Mono', monospace;
             border-radius: 2px;
         }
@@ -611,13 +665,13 @@
         }
 
         .project-card .card-description {
-            font-size: 0.9rem;
+            font-size: 0.95rem;
             line-height: 1.6;
-            margin-bottom: 0.75rem;
+            margin-bottom: 1rem;
         }
 
         .project-card .card-link {
-            font-size: 0.85rem;
+            font-size: 0.9rem;
             text-decoration: none;
             display: inline-flex;
             align-items: center;
@@ -642,8 +696,8 @@
         /* Expandable card styles */
         .project-card .card-expanded {
             display: none;
-            margin-top: 1rem;
-            padding-top: 1rem;
+            margin-top: 1.25rem;
+            padding-top: 1.25rem;
             border-top: 1px solid;
         }
 
@@ -676,8 +730,8 @@
         }
 
         .project-card .expand-label {
-            font-size: 0.75rem;
-            margin-top: 0.5rem;
+            font-size: 0.8rem;
+            margin-top: 0.75rem;
             opacity: 0.6;
             font-family: 'JetBrains Mono', monospace;
             transition: opacity 0.2s;
@@ -693,8 +747,8 @@
 
         .project-card .collapse-label {
             display: none;
-            font-size: 0.75rem;
-            margin-top: 0.5rem;
+            font-size: 0.8rem;
+            margin-top: 0.75rem;
             opacity: 0.6;
             font-family: 'JetBrains Mono', monospace;
         }
@@ -704,13 +758,13 @@
         }
 
         .project-card .detail-section {
-            margin-bottom: 0.75rem;
+            margin-bottom: 1rem;
         }
 
         .project-card .detail-label {
             font-weight: 500;
-            font-size: 0.8rem;
-            margin-bottom: 0.3rem;
+            font-size: 0.85rem;
+            margin-bottom: 0.4rem;
         }
 
         .dark .detail-label {
@@ -722,19 +776,19 @@
         }
 
         .project-card .detail-text {
-            font-size: 0.85rem;
+            font-size: 0.9rem;
             line-height: 1.6;
         }
 
         .project-card .detail-list {
             list-style: none;
             padding: 0;
-            font-size: 0.85rem;
-            line-height: 1.6;
+            font-size: 0.9rem;
+            line-height: 1.7;
         }
 
         .project-card .detail-list li {
-            margin-bottom: 0.25rem;
+            margin-bottom: 0.3rem;
         }
 
         /* ================================
@@ -742,12 +796,12 @@
            ================================ */
         .skills-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 1.25rem;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
         }
 
         .skill-category {
-            padding: 1.25rem;
+            padding: 1.5rem;
             border: 1px solid;
             transition: border-color 0.3s, box-shadow 0.3s;
         }
@@ -775,13 +829,13 @@
         .skill-category-header {
             display: flex;
             align-items: center;
-            gap: 0.6rem;
-            margin-bottom: 1rem;
+            gap: 0.75rem;
+            margin-bottom: 1.25rem;
         }
 
         .skill-category-icon {
-            width: 22px;
-            height: 22px;
+            width: 24px;
+            height: 24px;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -797,7 +851,7 @@
 
         .skill-category-title {
             font-family: 'JetBrains Mono', monospace;
-            font-size: 0.95rem;
+            font-size: 1rem;
             font-weight: 500;
             margin: 0;
         }
@@ -805,12 +859,12 @@
         .skill-pills {
             display: flex;
             flex-wrap: wrap;
-            gap: 0.4rem;
+            gap: 0.5rem;
         }
 
         .skill-pill {
-            font-size: 0.75rem;
-            padding: 0.35rem 0.65rem;
+            font-size: 0.8rem;
+            padding: 0.4rem 0.75rem;
             font-family: 'JetBrains Mono', monospace;
             border-radius: 3px;
             transition: transform 0.2s, background-color 0.2s;
@@ -866,8 +920,8 @@
 
         .skill-pill.learning::after {
             content: "→";
-            margin-left: 0.3rem;
-            font-size: 0.65rem;
+            margin-left: 0.35rem;
+            font-size: 0.7rem;
             opacity: 0.7;
         }
 
@@ -887,7 +941,7 @@
             display: flex;
             align-items: center;
             gap: 1rem;
-            margin: 1.5rem 0 1rem 0;
+            margin: 2rem 0 1.5rem 0;
         }
 
         .skills-divider-line {
@@ -905,7 +959,7 @@
 
         .skills-divider-text {
             font-family: 'JetBrains Mono', monospace;
-            font-size: 0.75rem;
+            font-size: 0.8rem;
             text-transform: uppercase;
             letter-spacing: 0.1em;
         }
@@ -919,8 +973,8 @@
         }
 
         .learning-section {
-            margin-top: 1.5rem;
-            padding: 1.25rem;
+            margin-top: 2rem;
+            padding: 1.5rem;
             border: 1px dashed;
         }
 
@@ -938,16 +992,16 @@
             display: flex;
             align-items: center;
             gap: 0.5rem;
-            margin-bottom: 0.75rem;
+            margin-bottom: 1rem;
         }
 
         .learning-icon {
-            font-size: 1rem;
+            font-size: 1.1rem;
         }
 
         .learning-title {
             font-family: 'JetBrains Mono', monospace;
-            font-size: 0.85rem;
+            font-size: 0.9rem;
             font-weight: 500;
         }
 
@@ -962,17 +1016,17 @@
         .learning-items {
             display: flex;
             flex-wrap: wrap;
-            gap: 0.4rem;
+            gap: 0.5rem;
         }
 
         /* ================================
-           Timeline Section - CENTERED ALTERNATING
+           REDESIGNED: Alternating Timeline
            ================================ */
         .timeline {
             position: relative;
-            max-width: 800px;
+            max-width: 900px;
             margin: 0 auto;
-            padding: 1rem 0;
+            padding: 0 1rem;
         }
 
         /* Center line */
@@ -981,9 +1035,9 @@
             position: absolute;
             left: 50%;
             transform: translateX(-50%);
+            width: 2px;
             top: 0;
             bottom: 0;
-            width: 2px;
         }
 
         .dark .timeline::before {
@@ -996,47 +1050,37 @@
 
         .timeline-item {
             position: relative;
-            width: 50%;
-            padding: 0 2.5rem 2rem 2.5rem;
-        }
-
-        /* Left items */
-        .timeline-item:nth-child(odd) {
-            left: 0;
-            text-align: right;
-            padding-right: 2.5rem;
-            padding-left: 0;
-        }
-
-        /* Right items */
-        .timeline-item:nth-child(even) {
-            left: 50%;
-            text-align: left;
-            padding-left: 2.5rem;
-            padding-right: 0;
+            width: calc(50% - 30px);
+            padding-bottom: 3rem;
         }
 
         .timeline-item:last-child {
             padding-bottom: 0;
         }
 
+        /* Left side items (odd) */
+        .timeline-item:nth-child(odd) {
+            margin-right: auto;
+            text-align: right;
+            padding-right: 10px;
+        }
+
+        /* Right side items (even) */
+        .timeline-item:nth-child(even) {
+            margin-left: auto;
+            text-align: left;
+            padding-left: 10px;
+        }
+
         /* Center dot */
         .timeline-item::before {
             content: '';
             position: absolute;
-            top: 0.3rem;
             width: 14px;
             height: 14px;
             border-radius: 50%;
+            top: 5px;
             border: 2px solid;
-        }
-
-        .timeline-item:nth-child(odd)::before {
-            right: -7px;
-        }
-
-        .timeline-item:nth-child(even)::before {
-            left: -7px;
         }
 
         .dark .timeline-item::before {
@@ -1049,6 +1093,15 @@
             background: #ffffff;
             border-color: #0891b2;
             box-shadow: 0 0 10px rgba(8, 145, 178, 0.3);
+        }
+
+        /* Position dots at center line */
+        .timeline-item:nth-child(odd)::before {
+            right: -37px;
+        }
+
+        .timeline-item:nth-child(even)::before {
+            left: -37px;
         }
 
         .timeline-item.current::before {
@@ -1064,25 +1117,10 @@
             }
         }
 
-        .timeline-content {
-            padding: 1rem 1.25rem;
-            border: 1px solid;
-        }
-
-        .dark .timeline-content {
-            background: rgba(10, 10, 10, 0.6);
-            border-color: #262626;
-        }
-
-        .light .timeline-content {
-            background: rgba(255, 255, 255, 0.8);
-            border-color: #e5e5e5;
-        }
-
         .timeline-date {
             font-family: 'JetBrains Mono', monospace;
-            font-size: 0.75rem;
-            margin-bottom: 0.4rem;
+            font-size: 0.8rem;
+            margin-bottom: 0.5rem;
         }
 
         .dark .timeline-date {
@@ -1095,21 +1133,21 @@
 
         .timeline-title {
             font-family: 'JetBrains Mono', monospace;
-            font-size: 1rem;
+            font-size: 1.1rem;
             font-weight: 500;
-            margin-bottom: 0.4rem;
+            margin-bottom: 0.5rem;
         }
 
         .timeline-description {
-            font-size: 0.9rem;
-            line-height: 1.5;
+            font-size: 0.95rem;
+            line-height: 1.6;
         }
 
         .timeline-tag {
             display: inline-block;
-            font-size: 0.65rem;
-            padding: 0.15rem 0.4rem;
-            margin-top: 0.6rem;
+            font-size: 0.7rem;
+            padding: 0.2rem 0.5rem;
+            margin-top: 0.75rem;
             font-family: 'JetBrains Mono', monospace;
             border-radius: 2px;
         }
@@ -1124,22 +1162,32 @@
             color: #0891b2;
         }
 
-        /* Mobile timeline - single column */
+        /* Mobile: Single column timeline */
         @media (max-width: 768px) {
+            .timeline {
+                padding-left: 2rem;
+            }
+
             .timeline::before {
-                left: 20px;
+                left: 0;
+                transform: none;
             }
 
             .timeline-item {
                 width: 100%;
-                left: 0 !important;
                 text-align: left !important;
-                padding-left: 50px !important;
-                padding-right: 0 !important;
+                padding-left: 1.5rem;
+                padding-right: 0;
+            }
+
+            .timeline-item:nth-child(odd),
+            .timeline-item:nth-child(even) {
+                margin-left: 0;
+                margin-right: 0;
             }
 
             .timeline-item::before {
-                left: 13px !important;
+                left: -2rem !important;
                 right: auto !important;
             }
         }
@@ -1148,13 +1196,13 @@
            Contact Section
            ================================ */
         .contact-info {
-            font-size: clamp(0.95rem, 2.5vw, 1.05rem);
-            line-height: 2;
+            font-size: clamp(1rem, 2.5vw, 1.1rem);
+            line-height: 2.2;
             text-align: left;
         }
 
         .contact-info p {
-            margin-bottom: 0.75rem;
+            margin-bottom: 1rem;
         }
 
         .contact-info a {
@@ -1181,8 +1229,8 @@
             position: fixed;
             bottom: 2rem;
             right: 2rem;
-            width: 44px;
-            height: 44px;
+            width: 48px;
+            height: 48px;
             border-radius: 50%;
             border: 1.5px solid;
             background: transparent;
@@ -1235,9 +1283,9 @@
            Footer
            ================================ */
         footer {
-            padding: 1.5rem;
+            padding: 2rem;
             text-align: center;
-            font-size: 0.8rem;
+            font-size: 0.85rem;
             font-family: 'JetBrains Mono', monospace;
         }
 
@@ -1275,8 +1323,8 @@
         .footer-links {
             display: flex;
             justify-content: center;
-            gap: 1.25rem;
-            margin-bottom: 0.75rem;
+            gap: 1.5rem;
+            margin-bottom: 1rem;
         }
 
         /* ================================
@@ -1291,13 +1339,15 @@
                 display: flex !important;
             }
 
-            section {
-                padding: 3rem 1.5rem;
+            #home {
+                padding: 4rem 1.5rem;
+                min-height: auto;
+                max-height: none;
+                padding-top: 6rem;
             }
 
-            #home {
-                padding-top: 5rem;
-                padding-bottom: 3rem;
+            section {
+                padding: 3rem 1.5rem;
             }
 
             .projects-grid {
@@ -1305,12 +1355,12 @@
             }
 
             .project-card {
-                padding: 1.25rem;
+                padding: 1.5rem;
             }
 
             .footer-links {
                 flex-direction: column;
-                gap: 0.5rem;
+                gap: 0.75rem;
             }
 
             .skills-grid {
@@ -1320,8 +1370,8 @@
             .back-to-top {
                 bottom: 1.5rem;
                 right: 1.5rem;
-                width: 40px;
-                height: 40px;
+                width: 42px;
+                height: 42px;
             }
 
             .btn-group {
@@ -1332,6 +1382,38 @@
             .btn {
                 width: 100%;
                 justify-content: center;
+            }
+
+            nav {
+                justify-content: flex-start;
+                gap: 1rem;
+            }
+
+            .logo {
+                text-align: left;
+                font-size: 1rem;
+            }
+
+            #home {
+                align-items: flex-start;
+                text-align: left;
+            }
+
+            #home h1 {
+                font-size: clamp(2.5rem, 9vw, 3.2rem);
+            }
+
+            #home .subtitle,
+            #home .description {
+                text-align: left;
+            }
+
+            .btn-group {
+                justify-content: flex-start;
+            }
+
+            section h2 {
+                text-align: left;
             }
         }
 
@@ -1497,44 +1579,6 @@
             }
         }
 
-        @media (max-width: 768px) {
-            nav {
-                justify-content: flex-start;
-                gap: 1rem;
-            }
-
-            .logo {
-                text-align: left;
-                font-size: 1rem;
-            }
-        }
-
-        @media (max-width: 768px) {
-            #home {
-                align-items: flex-start;
-                text-align: left;
-            }
-
-            #home h1 {
-                font-size: clamp(2.2rem, 8vw, 3rem);
-            }
-
-            #home .subtitle,
-            #home .description {
-                text-align: left;
-            }
-
-            .btn-group {
-                justify-content: flex-start;
-            }
-        }
-
-        @media (max-width: 768px) {
-            section h2 {
-                text-align: left;
-            }
-        }
-
         .stackable {
             display: flex;
             justify-content: center;
@@ -1561,54 +1605,6 @@
         .sep::before {
             content: "|";
             opacity: 0.7;
-        }
-
-        /* Status badge */
-        .status-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            font-size: 0.8rem;
-            font-family: 'JetBrains Mono', monospace;
-            padding: 0.4rem 0.9rem;
-            margin-bottom: 1.5rem;
-            border-radius: 2px;
-        }
-
-        .dark .status-badge {
-            background: rgba(6, 182, 212, 0.1);
-            color: #06b6d4;
-            border: 1px solid rgba(6, 182, 212, 0.3);
-        }
-
-        .light .status-badge {
-            background: rgba(8, 145, 178, 0.1);
-            color: #0891b2;
-            border: 1px solid rgba(8, 145, 178, 0.3);
-        }
-
-        .status-dot {
-            width: 7px;
-            height: 7px;
-            border-radius: 50%;
-            animation: pulse 2s infinite;
-        }
-
-        .dark .status-dot {
-            background: #06b6d4;
-        }
-
-        .light .status-dot {
-            background: #0891b2;
-        }
-
-        @keyframes pulse {
-            0%, 100% {
-                opacity: 1;
-            }
-            50% {
-                opacity: 0.4;
-            }
         }
     </style>
 </head>
@@ -1750,45 +1746,37 @@
             </div>
         </section>
 
-        <!-- Journey/Timeline Section -->
+        <!-- Journey/Timeline Section - REDESIGNED -->
         <section id="journey" class="fade-in-section">
             <div class="content-wrapper-wide">
                 <h2>Journey</h2>
                 <div class="timeline">
-                    <!-- Item 1 - Left side -->
+                    <!-- Item 1: Left side -->
                     <div class="timeline-item current">
-                        <div class="timeline-content">
-                            <div class="timeline-date">Jan 2025 - Present</div>
-                            <div class="timeline-title">Rebuilding Foundations</div>
-                            <p class="timeline-description secondary">
-                                Decided to rebuild CS fundamentals from first principles. Focusing on DSA, clean code, and understanding over memorization.
-                            </p>
-                            <span class="timeline-tag">In Progress</span>
-                        </div>
+                        <div class="timeline-date">Dec 2025 - Present</div>
+                        <div class="timeline-title">Rebuilding Foundations</div>
+                        <p class="timeline-description secondary">
+                            Decided to rebuild CS fundamentals from first principles. Focusing on DSA, clean code, and understanding over memorization.
+                        </p>
+                        <span class="timeline-tag">In Progress</span>
                     </div>
-
-                    <!-- Item 2 - Right side -->
+                    <!-- Item 2: Right side -->
                     <div class="timeline-item">
-                        <div class="timeline-content">
-                            <div class="timeline-date">Jan 2025</div>
-                            <div class="timeline-title">Advanced Content Tracker</div>
-                            <p class="timeline-description secondary">
-                                Built a Linux daemon with ML integration. First major project combining systems programming with machine learning.
-                            </p>
-                            <span class="timeline-tag">Python • Linux • ML</span>
-                        </div>
+                        <div class="timeline-date">Jan 2026</div>
+                        <div class="timeline-title">Advanced Content Tracker</div>
+                        <p class="timeline-description secondary">
+                            Built a Linux daemon with ML integration. First major project combining systems programming with machine learning.
+                        </p>
+                        <span class="timeline-tag">Python • Linux • ML</span>
                     </div>
-
-                    <!-- Item 3 - Left side -->
+                    <!-- Item 3: Left side -->
                     <div class="timeline-item">
-                        <div class="timeline-content">
-                            <div class="timeline-date">2023</div>
-                            <div class="timeline-title">Started CS Degree</div>
-                            <p class="timeline-description secondary">
-                                Began Computer Science undergraduate studies. Exposure to programming fundamentals, OOP, and basic data structures.
-                            </p>
-                            <span class="timeline-tag">University</span>
-                        </div>
+                        <div class="timeline-date">2023</div>
+                        <div class="timeline-title">Started CS Degree</div>
+                        <p class="timeline-description secondary">
+                            Began Computer Science undergraduate studies. Exposure to programming fundamentals, OOP, and basic data structures.
+                        </p>
+                        <span class="timeline-tag">University</span>
                     </div>
                 </div>
             </div>
@@ -1806,7 +1794,7 @@
                 <div class="divider"></div>
 
                 <div class="secondary">
-                    <p style="margin-bottom: 0.75rem; font-weight: 500; text-align: left;">
+                    <p style="margin-bottom: 1rem; font-weight: 500; text-align: left;">
                         What I value:
                     </p>
                     <ul class="values-list">
@@ -1829,7 +1817,7 @@
                     <div class="skill-category">
                         <div class="skill-category-header">
                             <div class="skill-category-icon">
-                                <svg width="18" height="18" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
+                                <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
                                     <polyline points="16 18 22 12 16 6"></polyline>
                                     <polyline points="8 6 2 12 8 18"></polyline>
                                 </svg>
@@ -1848,7 +1836,7 @@
                     <div class="skill-category">
                         <div class="skill-category-header">
                             <div class="skill-category-icon">
-                                <svg width="18" height="18" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
+                                <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
                                     <circle cx="12" cy="12" r="10"></circle>
                                     <polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"></polygon>
                                 </svg>
@@ -1867,7 +1855,7 @@
                     <div class="skill-category">
                         <div class="skill-category-header">
                             <div class="skill-category-icon">
-                                <svg width="18" height="18" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
+                                <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
                                     <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"></path>
                                 </svg>
                             </div>
@@ -1886,7 +1874,7 @@
                     <div class="skill-category">
                         <div class="skill-category-header">
                             <div class="skill-category-icon">
-                                <svg width="18" height="18" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
+                                <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
                                     <line x1="8" y1="6" x2="21" y2="6"></line>
                                     <line x1="8" y1="12" x2="21" y2="12"></line>
                                     <line x1="8" y1="18" x2="21" y2="18"></line>
@@ -1958,7 +1946,7 @@
 
     <!-- Back to Top Button -->
     <button class="back-to-top" id="backToTop" onclick="scrollToSection('home')" aria-label="Back to top">
-        <svg width="18" height="18" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
+        <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
             <polyline points="18 15 12 9 6 15"></polyline>
         </svg>
     </button>
@@ -2144,226 +2132,7 @@
         // ================================
         function updateBackToTop() {
             const backToTop = document.getElementById('backToTop');
-            if (window.scrollY > 400) {
-                backToTop.classList.add('visible');
-            } else {
-                backToTop.classList.remove('visible');
-            }
-        }
-
-        // ================================
-        // Navbar Hide/Show
-        // ================================
-        let lastScrollY = window.scrollY;
-        const nav = document.querySelector('nav');
-
-        function handleNavbar() {
-            if (window.scrollY > lastScrollY && window.scrollY > 100) {
-                nav.style.transform = 'translateY(-100%)';
-            } else {
-                nav.style.transform = 'translateY(0)';
-            }
-            lastScrollY = window.scrollY;
-        }
-
-        // ================================
-        // Active Nav Link
-        // ================================
-        function updateActiveNav() {
-            const sections = ['home', 'projects', 'journey', 'about', 'skills', 'contact'];
-            const navLinks = document.querySelectorAll('.nav-link');
-            
-            let current = '';
-            sections.forEach(section => {
-                const element = document.getElementById(section);
-                if (element) {
-                    const rect = element.getBoundingClientRect();
-                    if (rect.top <= 150 && rect.bottom >= 150) {
-                        current = section;
-                    }
-                }
-            });
-
-            navLinks.forEach(link => {
-                link.classList.remove('active');
-                if (link.textContent === current) {
-                    link.classList.add('active');
-                }
-            });
-        }
-
-    <script>
-        // ================================
-        // Theme Management with Persistence
-        // ================================
-        
-        function getPreferredTheme() {
-            const savedTheme = localStorage.getItem('theme');
-            if (savedTheme) {
-                return savedTheme;
-            }
-            if (window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches) {
-                return 'light';
-            }
-            return 'dark';
-        }
-
-        function applyTheme(theme) {
-            const body = document.body;
-            const sunIcon = document.querySelector('.sun-icon');
-            const moonIcon = document.querySelector('.moon-icon');
-            
-            body.classList.remove('dark', 'light');
-            body.classList.add(theme);
-            
-            if (theme === 'light') {
-                sunIcon.style.display = 'block';
-                moonIcon.style.display = 'none';
-            } else {
-                sunIcon.style.display = 'none';
-                moonIcon.style.display = 'block';
-            }
-            
-            localStorage.setItem('theme', theme);
-        }
-
-        function toggleTheme() {
-            const currentTheme = document.body.classList.contains('dark') ? 'dark' : 'light';
-            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
-            applyTheme(newTheme);
-        }
-
-        if (window.matchMedia) {
-            window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', e => {
-                if (!localStorage.getItem('theme')) {
-                    applyTheme(e.matches ? 'dark' : 'light');
-                }
-            });
-        }
-
-        // ================================
-        // Projects Data
-        // ================================
-        const projects = [
-            {
-                title: "Advanced Content Tracker",
-                tags: ["Python", "Linux", "ML", "OCR", "Daemon"],
-                description: "A Linux background daemon that analyzes screen content using AI/ML for productivity tracking.",
-                problem: "Existing time trackers only show which app is open, not what you're actually doing. Watching a tutorial vs. watching memes both show as 'YouTube'.",
-                approach: "Built a daemon that captures screenshots, runs CLIP for image classification, NudeNet for content filtering, and Tesseract for text extraction. All processing happens locally for privacy.",
-                learned: [
-                    "How Linux daemons work (systemd, signals, PID files)",
-                    "Practical ML model integration (CLIP, NudeNet)",
-                    "Privacy-first architecture design",
-                    "Multi-threaded Python with queues"
-                ],
-                github: "https://github.com/arsayem53/advanced-content-tracker"
-            },
-            {
-                title: "Array Operations (Manual Implementation)",
-                tags: ["Python", "DSA", "Fundamentals"],
-                description: "Built array operations from scratch to understand memory behavior.",
-                problem: "Understand how array-based data structures work internally without relying on built-in helpers.",
-                approach: "Implemented insertion, deletion, searching, reversing, and duplicate removal using index-based logic. All operations written manually to understand element shifting.",
-                learned: [
-                    "Why insertions/deletions are costly in arrays",
-                    "How index-based traversal works",
-                    "Where abstraction becomes necessary"
-                ],
-                github: "https://github.com/arsayem53/cse-rebuild/tree/b82d58630a84cee793f67b60eb222d0bedc0aaed/day-2%20python_basic_dsa"
-            }
-        ];
-
-        // ================================
-        // Mobile Menu
-        // ================================
-        function toggleMobileMenu() {
-            const menu = document.getElementById('mobileMenu');
-            const menuIcon = document.querySelector('.menu-icon');
-            const closeIcon = document.querySelector('.close-icon');
-            
-            menu.classList.toggle('active');
-            if (menu.classList.contains('active')) {
-                menuIcon.style.display = 'none';
-                closeIcon.style.display = 'block';
-            } else {
-                menuIcon.style.display = 'block';
-                closeIcon.style.display = 'none';
-            }
-        }
-
-        // ================================
-        // Scroll Functions
-        // ================================
-        function scrollToSection(id) {
-            document.getElementById(id).scrollIntoView({ behavior: 'smooth' });
-        }
-
-        // ================================
-        // Render Projects
-        // ================================
-        function renderProjects() {
-            const grid = document.getElementById('projectsGrid');
-            grid.innerHTML = projects.map((p, index) => `
-                <div class="project-card" onclick="toggleProject(${index}, event)">
-                    <h3>${p.title}</h3>
-                    <div class="tag-list">
-                        ${p.tags.map(t => `<span class="tag">${t}</span>`).join('')}
-                    </div>
-                    <p class="card-description secondary">${p.description}</p>
-                    <p class="expand-label secondary">↓ click to expand</p>
-                    <p class="collapse-label secondary">↑ click to collapse</p>
-                    
-                    <div class="card-expanded">
-                        <div class="detail-section">
-                            <p class="detail-label">Problem:</p>
-                            <p class="detail-text secondary">${p.problem}</p>
-                        </div>
-                        <div class="detail-section">
-                            <p class="detail-label">Approach:</p>
-                            <p class="detail-text secondary">${p.approach}</p>
-                        </div>
-                        <div class="detail-section">
-                            <p class="detail-label">What I Learned:</p>
-                            <ul class="detail-list secondary">
-                                ${p.learned.map(item => `<li>— ${item}</li>`).join('')}
-                            </ul>
-                        </div>
-                    </div>
-                    
-                    <a href="${p.github}" target="_blank" rel="noopener noreferrer" class="card-link" onclick="event.stopPropagation()">
-                        View Code
-                        <svg width="14" height="14" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path d="M7 17L17 7M17 7H7M17 7V17" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                        </svg>
-                    </a>
-                </div>
-            `).join('');
-        }
-
-        function toggleProject(index, event) {
-            if (event.target.closest('.card-link')) return;
-            const cards = document.querySelectorAll('.project-card');
-            cards[index].classList.toggle('expanded');
-        }
-
-        // ================================
-        // Scroll Progress Bar
-        // ================================
-        function updateScrollProgress() {
-            const scrollProgress = document.getElementById('scrollProgress');
-            const scrollTop = window.scrollY;
-            const docHeight = document.documentElement.scrollHeight - window.innerHeight;
-            const scrollPercent = (scrollTop / docHeight) * 100;
-            scrollProgress.style.width = scrollPercent + '%';
-        }
-
-        // ================================
-        // Back to Top Button
-        // ================================
-        function updateBackToTop() {
-            const backToTop = document.getElementById('backToTop');
-            if (window.scrollY > 400) {
+            if (window.scrollY > 500) {
                 backToTop.classList.add('visible');
             } else {
                 backToTop.classList.remove('visible');
@@ -2445,19 +2214,10 @@
         // Initialize
         // ================================
         document.addEventListener('DOMContentLoaded', () => {
-            // Apply saved/preferred theme
             applyTheme(getPreferredTheme());
-            
-            // Render projects
             renderProjects();
-            
-            // Initialize fade-in sections
             initFadeInSections();
-            
-            // Add scroll listener
             window.addEventListener('scroll', handleScroll, { passive: true });
-            
-            // Initial calls
             handleScroll();
         });
     </script>
