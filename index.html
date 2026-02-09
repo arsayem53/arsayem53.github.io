@@ -1892,51 +1892,51 @@
         }
 
         // ================================
-        // Projects Data
-        // ================================
-        const projects = [
-            {
-                title: "Advanced Content Tracker",
-                tags: ["Python", "Linux", "ML", "OCR", "Daemon"],
-                description: "A Linux background daemon that analyzes screen content using AI/ML for productivity tracking.",
-                problem: "Existing time trackers only show which app is open, not what you're actually doing. Watching a tutorial vs. watching memes both show as 'YouTube'.",
-                approach: "Built a daemon that captures screenshots, runs CLIP for image classification, NudeNet for content filtering, and Tesseract for text extraction. All processing happens locally for privacy.",
-                learned: [
-                    "How Linux daemons work (systemd, signals, PID files)",
-                    "Practical ML model integration (CLIP, NudeNet)",
-                    "Privacy-first architecture design",
-                    "Multi-threaded Python with queues"
-                ],
-                github: "https://github.com/arsayem53/advanced-content-tracker"
-            },
-            {
-                title: "Array Operations (Manual Implementation)",
-                tags: ["Python", "DSA", "Fundamentals"],
-                description: "Built array operations from scratch to understand memory behavior.",
-                problem: "Understand how array-based data structures work internally without relying on built-in helpers.",
-                approach: "Implemented insertion, deletion, searching, reversing, and duplicate removal using index-based logic. All operations written manually to understand element shifting.",
-                learned: [
-                    "Why insertions/deletions are costly in arrays",
-                    "How index-based traversal works",
-                    "Where abstraction becomes necessary"
-                ],
-                github: "https://github.com/arsayem53/cse-rebuild/tree/b82d58630a84cee793f67b60eb222d0bedc0aaed/day-2%20python_basic_dsa"
-            },
-            {
-                title: "Student Grade Manager",
-                tags: ["Python", "DSA", "Arrays", "CLI"],
-                description: "A CLI-based student grade management system built using fundamental array operations and data structures.",
-                problem: "Practice core array operations (traversal, searching, sorting) in a practical context while handling real-world constraints like validation and edge cases.",
-                approach: "Built a complete CRUD system using Python lists and dictionaries. Implemented operations like add/remove students, calculate statistics (average, min/max), count conditional records, and sort by grade. Focused on clean validation, edge case handling, and maintaining data integrity without modifying original arrays.",
-                learned: [
-                    "Array traversal patterns for statistics calculation",
-                    "Immutable operations (sorting copies, not originals)",
-                    "Input validation and error handling in CLI apps",
-                    "Lambda functions for custom sorting keys"
-    ],
-                github: "https://github.com/arsayem53/faang-prep-journey/tree/main/week-01-arrays/mini-project"
-}
-        ];
+// Projects Data
+// ================================
+const projects = [
+    {
+        title: "Advanced Content Tracker",
+        tags: ["Python", "Linux", "ML", "OCR", "Daemon"],
+        description: "A Linux background daemon that analyzes screen content using AI/ML for productivity tracking.",
+        problem: "Existing time trackers only show which app is open, not what you're actually doing. Watching a tutorial vs. watching memes both show as 'YouTube'.",
+        approach: "Built a daemon that captures screenshots, runs CLIP for image classification, NudeNet for content filtering, and Tesseract for text extraction. All processing happens locally for privacy.",
+        learned: [
+            "How Linux daemons work (systemd, signals, PID files)",
+            "Practical ML model integration (CLIP, NudeNet)",
+            "Privacy-first architecture design",
+            "Multi-threaded Python with queues"
+        ],
+        github: "https://github.com/arsayem53/advanced-content-tracker"
+    },
+    {
+        title: "Student Grade Manager",
+        tags: ["Python", "DSA", "Arrays", "CLI"],
+        description: "Full-featured CLI application for managing student records with statistics, sorting, and validation.",
+        problem: "Apply fundamental array operations in a production-like scenario with real constraints: data validation, edge cases, and maintaining state integrity.",
+        approach: "Built CRUD system with 9 features: add/remove students, calculate average, find min/max grades, count above-average students, and display sorted results. Implemented immutable sorting (copies, not mutations), comprehensive input validation, and graceful error handling for edge cases like empty lists.",
+        learned: [
+            "Practical application of array traversal and statistics",
+            "Data integrity: immutable operations vs. in-place mutations",
+            "Defensive programming: validation at every input point",
+            "User experience in CLI apps (clear menus, helpful errors)"
+        ],
+        github: "https://github.com/arsayem53/faang-prep-journey/tree/main/week-01-arrays/mini-project"
+    },
+    {
+        title: "Array Operations from Scratch",
+        tags: ["Python", "DSA", "Fundamentals"],
+        description: "Manual implementation of core array operations to understand low-level memory behavior and time complexity.",
+        problem: "Built-in methods hide the mechanics. To truly understand Big O and why certain operations are costly, I needed to implement them manually.",
+        approach: "Wrote insertion, deletion, search, reverse, and deduplication without using built-in helpers. Tracked element shifts, handled edge cases, and measured operations to see O(n) vs O(1) in practice.",
+        learned: [
+            "Why array insertions are O(n): element shifting is unavoidable",
+            "Trade-offs between in-place vs. new array allocations",
+            "When abstraction helps vs. when it hides important details"
+        ],
+        github: "https://github.com/arsayem53/cse-rebuild/tree/b82d58630a84cee793f67b60eb222d0bedc0aaed/day-2%20python_basic_dsa"
+    }
+];
 
         // ================================
         // Mobile Menu
