@@ -1170,6 +1170,57 @@
             background: rgba(245, 158, 11, 0.1);
             color: var(--amber-600);
         }
+        /* Timeline collapse functionality */
+.timeline-hidden {
+    display: none;
+}
+
+.timeline.expanded .timeline-hidden {
+    display: block;
+}
+
+.toggle-btn {
+    display: block;
+    margin: 2rem auto 0;
+    padding: 0.75rem 1.5rem;
+    background: transparent;
+    border: 2px solid;
+    cursor: pointer;
+    font-size: 0.95rem;
+    transition: all 0.3s ease;
+    font-family: 'Inter', system-ui, sans-serif;
+    font-weight: 500;
+}
+
+.dark .toggle-btn {
+    border-color: #404040;
+    color: #e5e5e5;
+}
+
+.light .toggle-btn {
+    border-color: #d4d4d4;
+    color: #171717;
+}
+
+.dark .toggle-btn:hover {
+    border-color: var(--cyan-500);
+    color: var(--cyan-500);
+}
+
+.light .toggle-btn:hover {
+    border-color: var(--cyan-600);
+    color: var(--cyan-600);
+}
+
+#toggle-icon {
+    display: inline-block;
+    transition: transform 0.3s ease;
+    margin-left: 0.5rem;
+}
+
+.timeline.expanded ~ .toggle-btn #toggle-icon {
+    transform: rotate(180deg);
+}
 
         /* ================================
            Contact Section
@@ -1614,64 +1665,72 @@
         <section id="journey" class="fade-in-section">
             <div class="content-wrapper">
                 <h2>Journey</h2>
-                <div class="timeline">
-                    <div class="timeline-item current">
-                        <div class="timeline-date">Feb 9, 2026 - Present</div>
-                        <div class="timeline-title">Week 2: Stacks & LIFO Operations</div>
-                        <p class="timeline-description secondary">
-                            Implementing stack data structure from scratch, solving parentheses matching problems, and building a text editor with undo/redo using dual-stack architecture. Target: 7 LeetCode problems + Mini Project.
-                        </p>
-                        <span class="timeline-tag">In Progress</span>
-                    </div>
-                    <div class="timeline-item">
-                        <div class="timeline-date">Feb 2-8, 2026</div>
-                        <div class="timeline-title">Week 1 Complete: Arrays & Fundamentals</div>
-                        <p class="timeline-description secondary">
-                            Completed 16 array exercises covering traversal, manipulation, and sorting. Solved 7 LeetCode problems (two-pointer, prefix sum). Built Student Grade Manager with CRUD operations, validation, and statistics calculation.
-                        </p>
-                        <span class="timeline-tag">✓ 7 LC • 1 Project</span>
-                    </div>
-                    <div class="timeline-item">
-                        <div class="timeline-date">Jan 2026</div>
-                        <div class="timeline-title">Launched 11-Month FAANG Prep Journey</div>
-                        <p class="timeline-description secondary">
-                            Started systematic preparation roadmap: 44 weeks, 6 phases, 300+ LeetCode target. Covers DSA fundamentals → advanced algorithms → system design. Commitment: 4-5 hours daily with weekly mini-projects.
-                        </p>
-                        <span class="timeline-tag">Active • Phase 1/6</span>
-                    </div>
-                    <div class="timeline-item">
-                        <div class="timeline-date">Jan 2026</div>
-                        <div class="timeline-title">Advanced Content Tracker</div>
-                        <p class="timeline-description secondary">
-                            Built a Linux daemon with ML integration using CLIP, NudeNet, and Tesseract. First major project combining systems programming with machine learning for productivity tracking.
-                        </p>
-                        <span class="timeline-tag">Python • Linux • ML</span>
-                    </div>
-                    <div class="timeline-item">
-                        <div class="timeline-date">Dec 2025</div>
-                        <div class="timeline-title">Fundamental Rebuild Decision</div>
-                        <p class="timeline-description secondary">
-                            Identified gaps in CS fundamentals. Chose to pause feature development and commit to mastering core concepts from first principles with a structured, time-bound plan.
-                        </p>
-                        <span class="timeline-tag">Pivot</span>
-                    </div>
-                    <div class="timeline-item">
-                        <div class="timeline-date">2024</div>
-                        <div class="timeline-title">Built Array Operations from Scratch</div>
-                        <p class="timeline-description secondary">
-                            Manually implemented insertion, deletion, searching, and sorting to understand memory behavior, element shifting costs, and Big O complexity in practice.
-                        </p>
-                        <span class="timeline-tag">Python • DSA</span>
-                    </div>
-                    <div class="timeline-item">
-                        <div class="timeline-date">2023</div>
-                        <div class="timeline-title">Started CS Degree</div>
-                        <p class="timeline-description secondary">
-                            Began Computer Science undergraduate studies. Foundation in programming fundamentals, OOP, and data structures.
-                        </p>
-                        <span class="timeline-tag">University</span>
-                    </div>
-                </div>
+<div class="timeline">
+    <!-- First 3 items always visible -->
+    <div class="timeline-item current">
+        <div class="timeline-date">Feb 9, 2026 - Present</div>
+        <div class="timeline-title">Week 2: Stacks & LIFO Operations</div>
+        <p class="timeline-description secondary">
+            Implementing stack data structure from scratch, solving parentheses matching problems, and building a text editor with undo/redo using dual-stack architecture. Target: 7 LeetCode problems + Mini Project.
+        </p>
+        <span class="timeline-tag">In Progress</span>
+    </div>
+    <div class="timeline-item">
+        <div class="timeline-date">Feb 2-8, 2026</div>
+        <div class="timeline-title">Week 1 Complete: Arrays & Fundamentals</div>
+        <p class="timeline-description secondary">
+            Completed 16 array exercises covering traversal, manipulation, and sorting. Solved 7 LeetCode problems (two-pointer, prefix sum). Built Student Grade Manager with CRUD operations, validation, and statistics calculation.
+        </p>
+        <span class="timeline-tag">✓ 7 LC • 1 Project</span>
+    </div>
+    <div class="timeline-item">
+        <div class="timeline-date">Jan 2026</div>
+        <div class="timeline-title">Launched 11-Month FAANG Prep Journey</div>
+        <p class="timeline-description secondary">
+            Started systematic preparation roadmap: 44 weeks, 6 phases, 300+ LeetCode target. Covers DSA fundamentals → advanced algorithms → system design. Commitment: 4-5 hours daily with weekly mini-projects.
+        </p>
+        <span class="timeline-tag">Active • Phase 1/6</span>
+    </div>
+    
+    <!-- Collapsible items -->
+    <div class="timeline-item timeline-hidden">
+        <div class="timeline-date">Jan 2026</div>
+        <div class="timeline-title">Advanced Content Tracker</div>
+        <p class="timeline-description secondary">
+            Built a Linux daemon with ML integration using CLIP, NudeNet, and Tesseract. First major project combining systems programming with machine learning for productivity tracking.
+        </p>
+        <span class="timeline-tag">Python • Linux • ML</span>
+    </div>
+    <div class="timeline-item timeline-hidden">
+        <div class="timeline-date">Dec 2025</div>
+        <div class="timeline-title">Fundamental Rebuild Decision</div>
+        <p class="timeline-description secondary">
+            Identified gaps in CS fundamentals. Chose to pause feature development and commit to mastering core concepts from first principles with a structured, time-bound plan.
+        </p>
+        <span class="timeline-tag">Pivot</span>
+    </div>
+    <div class="timeline-item timeline-hidden">
+        <div class="timeline-date">2024</div>
+        <div class="timeline-title">Built Array Operations from Scratch</div>
+        <p class="timeline-description secondary">
+            Manually implemented insertion, deletion, searching, and sorting to understand memory behavior, element shifting costs, and Big O complexity in practice.
+        </p>
+        <span class="timeline-tag">Python • DSA</span>
+    </div>
+    <div class="timeline-item timeline-hidden">
+        <div class="timeline-date">2023</div>
+        <div class="timeline-title">Started CS Degree</div>
+        <p class="timeline-description secondary">
+            Began Computer Science undergraduate studies. Foundation in programming fundamentals, OOP, and data structures.
+        </p>
+        <span class="timeline-tag">University</span>
+    </div>
+</div>
+
+<!-- Add this button right after the timeline div closes -->
+<button id="toggle-timeline" class="toggle-btn">
+    Show More <span id="toggle-icon">▼</span>
+</button>
             </div>
         </section>
         <!-- About Section -->
@@ -2109,17 +2168,37 @@ const projects = [
             handleNavbar();
             updateActiveNav();
         }
-
+        
+       // ================================
+// Timeline Toggle
+// ================================
+function initTimelineToggle() {
+    const toggleBtn = document.getElementById('toggle-timeline');
+    const timeline = document.querySelector('.timeline');
+    
+    if (toggleBtn && timeline) {
+        toggleBtn.addEventListener('click', () => {
+            timeline.classList.toggle('expanded');
+            
+            if (timeline.classList.contains('expanded')) {
+                toggleBtn.innerHTML = 'Show Less <span id="toggle-icon">▲</span>';
+            } else {
+                toggleBtn.innerHTML = 'Show More <span id="toggle-icon">▼</span>';
+            }
+        });
+    }
+}
         // ================================
         // Initialize
         // ================================
-        document.addEventListener('DOMContentLoaded', () => {
-            applyTheme(getPreferredTheme());
-            renderProjects();
-            initFadeInSections();
-            window.addEventListener('scroll', handleScroll, { passive: true });
-            handleScroll();
-        });
+document.addEventListener('DOMContentLoaded', () => {
+    applyTheme(getPreferredTheme());
+    renderProjects();
+    initFadeInSections();
+    initTimelineToggle(); // ADD THIS LINE
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    handleScroll();
+});
     </script>
 </body>
 </html>
